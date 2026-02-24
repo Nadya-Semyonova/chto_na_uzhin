@@ -1,0 +1,106 @@
+.card {
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.12);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.content {
+  padding: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 12px 0;
+}
+
+.category {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #fef5e7;
+  color: #e67e22;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #34495e;
+  margin: 0;
+  white-space: pre-line;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.instructions::-webkit-scrollbar {
+  width: 6px;
+}
+
+.instructions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.instructions::-webkit-scrollbar-thumb {
+  background: #e67e22;
+  border-radius: 10px;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 32px;
+  text-align: center;
+  color: #95a5a6;
+}
+
+.placeholderIcon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.placeholderTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #7f8c8d;
+}
+
+.placeholderText {
+  font-size: 16px;
+  max-width: 300px;
+}
