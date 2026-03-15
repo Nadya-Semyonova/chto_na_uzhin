@@ -2,66 +2,127 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(145deg, #e8eef2 0%, #d5dee5 100%);
+  border-radius: 30px 30px 20px 20px;
+  padding: 20px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.2),
+    inset 0 2px 5px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 2px solid #b0c0ce;
+
 }
+
+/* Ручка холодильника */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  height: 15px;
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  border-radius: 10px;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.5);
+  border: 1px solid #6c7a7d;
+}
+
 
 .title {
   font-size: 24px;
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 8px 0;
+  padding-right: 50px; /* Чтобы текст не заходил на ручку */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .subtitle {
   font-size: 16px;
-  color: #7f8c8d;
+  color: #34495e;
   margin: 0 0 24px 0;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 2px dashed #95a5a6;
 }
 
 .ingredientList {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
   flex: 1;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
 }
 
 .ingredientItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  transition: background-color 0.2s;
+  gap: 8px;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 15px;
+  transition: all 0.2s;
   cursor: pointer;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.1),
+    inset 0 1px 3px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .ingredientItem:hover {
-  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  background: #fef9e7;
 }
 
 .checkbox {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  accent-color: #e67e22; /* Оранжевый цвет для чекбокса */
+  accent-color: #3498db;
 }
 
 .label {
-  font-size: 16px;
+  font-size: 14px;
   color: #2c3e50;
   cursor: pointer;
   flex: 1;
 }
 
 .selectedCount {
-  margin-top: 24px;
+  margin-top: 10px;
   padding: 12px;
-  background-color: #e67e22;
+  background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 3px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Стилизация скроллбара под холодильник */
+.ingredientList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ingredientList::-webkit-scrollbar-track {
+  background: #b0c0ce;
+  border-radius: 10px;
+}
+
+.ingredientList::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+  border-radius: 10px;
+  border: 1px solid #ecf0f1;
 }

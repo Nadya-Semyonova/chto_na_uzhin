@@ -1,28 +1,27 @@
 import { useState } from 'react';
 import styles from './Sidebar.module.css';
 
-// Список самых распространенных продуктов
 const POPULAR_INGREDIENTS = [
-  'Курица',
-  'Яйца',
-  'Картофель',
-  'Лук',
-  'Морковь',
-  'Молоко',
-  'Сыр',
-  'Помидоры',
-  'Огурцы',
-  'Хлеб',
-  'Макароны',
-  'Рис',
-  'Гречка',
-  'Фарш',
-  'Рыба',
-  'Чеснок',
-  'Грибы',
-  'Капуста',
-  'Сметана',
-  'Масло растительное',
+  '🥚 Яйца',
+  '🥛 Молоко',
+  '🧀 Сыр',
+  '🍅 Помидоры',
+  '🥒 Огурцы',
+  '🍗 Курица',
+  '🥔 Картофель',
+  '🧅 Лук',
+  '🥕 Морковь',
+  '🍞 Хлеб',
+  '🍝 Макароны',
+  '🍚 Рис',
+  '🌾 Гречка',
+  '🥩 Фарш',
+  '🐟 Рыба',
+  '🧄 Чеснок',
+  '🍄 Грибы',
+  '🥬 Капуста',
+  '🥛 Сметана',
+  '🫒 Масло',
 ];
 
 interface SidebarProps {
@@ -37,8 +36,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange }) => {
       const newSelected = prev.includes(ingredient)
         ? prev.filter(i => i !== ingredient)
         : [...prev, ingredient];
-      
-      // Вызываем колбэк, если он передан
       onIngredientsChange?.(newSelected);
       return newSelected;
     });
@@ -46,8 +43,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange }) => {
 
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.title}>Что в холодильнике? 🧐</h2>
-      <p className={styles.subtitle}>Выбери продукты</p>
+      <h2 className={styles.title}>
+        Холодильник 
+        <span style={{ fontSize: '14px', display: 'block', color: '#7f8c8d' }}>
+          Открой и посмотри
+        </span>
+      </h2>
       
       <div className={styles.ingredientList}>
         {POPULAR_INGREDIENTS.map((ingredient) => (
@@ -65,7 +66,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange }) => {
 
       {selected.length > 0 && (
         <div className={styles.selectedCount}>
-          Выбрано продуктов: {selected.length}
+        Продуктов в холодильнике: {selected.length}
         </div>
       )}
     </div>
