@@ -31,8 +31,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <img 
-          src={recipe.imageUrl} 
+        <img
+          src={recipe.imageUrl}
           alt={recipe.title}
           className={styles.image}
           onError={(e) => {

@@ -9,13 +9,9 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ sidebar, children }) => {
   return (
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
-        {sidebar}
-      </aside>
+      <aside className={styles.sidebar}>{sidebar}</aside>
       <main className={styles.mainContent}>
-        <div className={styles.container}>
-          {children}
-        </div>
+        <div className={styles.container}>{children}</div>
       </main>
     </div>
   );

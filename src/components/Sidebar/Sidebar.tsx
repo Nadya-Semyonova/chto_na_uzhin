@@ -1,72 +1,85 @@
 import { useState } from 'react';
 import styles from './Sidebar.module.css';
-
-const POPULAR_INGREDIENTS = [
-  '🥚 Яйца',
-  '🥛 Молоко',
-  '🧀 Сыр',
-  '🍅 Помидоры',
-  '🥒 Огурцы',
-  '🍗 Курица',
-  '🥔 Картофель',
-  '🧅 Лук',
-  '🥕 Морковь',
-  '🍞 Хлеб',
-  '🍝 Макароны',
-  '🍚 Рис',
-  '🌾 Гречка',
-  '🥩 Фарш',
-  '🐟 Рыба',
-  '🧄 Чеснок',
-  '🍄 Грибы',
-  '🥬 Капуста',
-  '🥛 Сметана',
-  '🫒 Масло',
-];
+import {
+  POPULAR_INGREDIENTS,
+  INGREDIENT_CATEGORIES,
+  type Ingredient,
+} from '../../data/ingredients';
 
 interface SidebarProps {
   onIngredientsChange?: (selectedIngredients: string[]) => void;
+  onGenerateFromFridge?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange, onGenerateFromFridge }) => {
   const [selected, setSelected] = useState<string[]>([]);
 
   const handleIngredientToggle = (ingredient: string) => {
-    setSelected(prev => {
+    setSelected((prev) => {
       const newSelected = prev.includes(ingredient)
-        ? prev.filter(i => i !== ingredient)
+        ? prev.filter((i) => i !== ingredient)
         : [...prev, ingredient];
       onIngredientsChange?.(newSelected);
       return newSelected;
     });
   };
 
+  const handleClearAll = () => {
+    setSelected([]);
+    onIngredientsChange?.([]);
+  };
+
+  // Группируем ингредиенты по категориям
+  const groupedIngredients = POPULAR_INGREDIENTS.reduce(
+    (acc, ingredient) => {
+      if (!acc[ingredient.category]) {
+        acc[ingredient.category] = [];
+      }
+      acc[ingredient.category].push(ingredient);
+      return acc;
+    },
+    {} as Record<string, Ingredient[]>
+  );
+
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>
-        Холодильник 
-        <span style={{ fontSize: '14px', display: 'block', color: '#7f8c8d' }}>
-          Открой и посмотри
-        </span>
+        Холодильник
+        <span className={styles.subtitle}>Открой и посмотри</span>
       </h2>
-      
+
       <div className={styles.ingredientList}>
-        {POPULAR_INGREDIENTS.map((ingredient) => (
-          <label key={ingredient} className={styles.ingredientItem}>
-            <input
-              type="checkbox"
-              className={styles.checkbox}
-              checked={selected.includes(ingredient)}
-              onChange={() => handleIngredientToggle(ingredient)}
-            />
-            <span className={styles.label}>{ingredient}</span>
-          </label>
+        {Object.entries(groupedIngredients).map(([category, ingredients]) => (
+          <div key={category} className={styles.category}>
+            <h3 className={styles.categoryTitle}>
+              {INGREDIENT_CATEGORIES[category as keyof typeof INGREDIENT_CATEGORIES]}
+            </h3>
+            {ingredients.map((ingredient) => (
+              <label key={ingredient.id} className={styles.ingredientItem}>
+                <input
+                  type="checkbox"
+                  className={styles.checkbox}
+                  checked={selected.includes(ingredient.id)}
+                  onChange={() => handleIngredientToggle(ingredient.id)}
+                />
+                <span className={styles.label}>{ingredient.name}</span>
+              </label>
+            ))}
+          </div>
         ))}
       </div>
 
       {selected.length > 0 && (
-        <div className={styles.selectedCount}>
-        Продуктов в холодильнике: {selected.length}
+        <div className={styles.fridgeFooter}>
+          <div className={styles.selectedCount}>Продуктов: {selected.length}</div>
+          <div className={styles.fridgeActions}>
+            <button className={styles.clearButton} onClick={handleClearAll}>
+              Очистить
+            </button>
+            <button className={styles.cookButton} onClick={onGenerateFromFridge}>
+              Приготовить!
+            </button>
+          </div>
         </div>
       )}
     </div>

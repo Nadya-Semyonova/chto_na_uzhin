@@ -3,55 +3,78 @@ import { Layout } from './components/Layout';
 import { Sidebar } from './components/Sidebar';
 import { RecipeCard, type Recipe } from './components/RecipeCard';
 import { GenerateButton } from './components/GenerateButton';
+import { findRecipeByIngredients, getRandomRecipe } from './data/recipes';
 import styles from './App.module.css';
 
-// Временные данные для демонстрации верстки
-const MOCK_RECIPE: Recipe = {
-  id: '1',
-  title: 'Паста Карбонара',
-  category: 'Итальянская кухня',
-  imageUrl: 'https://www.themealdb.com/images/media/meals/xxpqsy1511182222.jpg',
-  instructions: 'Отварите спагетти в подсоленной воде. Обжарьте бекон с чесноком. Смешайте яйца с сыром пармезан. Соедините горячие спагетти с беконом, добавьте яичную смесь и быстро перемешайте. Подавайте сразу же с черным перцем.'
-};
-
 function App() {
-  const [, setSelectedIngredients] = useState<string[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [currentRecipe, setCurrentRecipe] = useState<Recipe | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRandomMode, setIsRandomMode] = useState(false);
 
-  const handleGenerateRecipe = () => {
+  const handleGenerateRecipe = (useSelectedIngredients: boolean = false) => {
     setIsLoading(true);
-    
+    setIsRandomMode(!useSelectedIngredients);
+
     // Имитация загрузки рецепта
     setTimeout(() => {
-      // Пока просто ставим моковые данные
-      // Позже здесь будет реальный запрос к API
-      setCurrentRecipe(MOCK_RECIPE);
+      let recipe = null;
+
+      if (useSelectedIngredients && selectedIngredients.length > 0) {
+        // Генерируем рецепт на основе выбранных ингредиентов
+        recipe = findRecipeByIngredients(selectedIngredients);
+
+        if (!recipe) {
+          alert(
+            'К сожалению, нет рецептов, полностью подходящих под ваши ингредиенты. Показан рецепт с максимальным совпадением.'
+          );
+          recipe = findRecipeByIngredients(selectedIngredients); // findBestMatchingRecipe вызывается внутри
+        }
+      } else {
+        // Генерируем случайный рецепт
+        recipe = getRandomRecipe();
+      }
+
+      setCurrentRecipe(recipe);
       setIsLoading(false);
-    }, 1000);
+    }, 800);
+  };
+
+  const handleRandomRecipe = () => {
+    handleGenerateRecipe(false);
+  };
+
+  const handleRecipeFromFridge = () => {
+    if (selectedIngredients.length === 0) {
+      alert('Добавьте продукты в холодильник!');
+      return;
+    }
+    handleGenerateRecipe(true);
   };
 
   return (
     <>
       <Layout
         sidebar={
-          <Sidebar 
+          <Sidebar
             onIngredientsChange={setSelectedIngredients}
+            onGenerateFromFridge={handleRecipeFromFridge}
           />
         }
       >
         <RecipeCard recipe={currentRecipe} />
-        <GenerateButton 
-          onClick={handleGenerateRecipe}
-          disabled={isLoading}
-        />
+        <div className={styles.buttonContainer}>
+          <GenerateButton onClick={handleRandomRecipe} disabled={isLoading} variant="random" />
+          {!isRandomMode && selectedIngredients.length > 0 && (
+            <div className={styles.hint}>Рецепт подобран по ингредиентам из холодильника</div>
+          )}
+        </div>
       </Layout>
-      
+
       {isLoading && (
         <div className={styles.loadingOverlay}>
           <div className={styles.loading}>
-            {/* Здесь можно добавить красивый спиннер */}
-            ⏳ Ищем рецепт...
+            {/* Здесь можно добавить красивый спиннер */}⏳ Ищем рецепт...
           </div>
         </div>
       )}
