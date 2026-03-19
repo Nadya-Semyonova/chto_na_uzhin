@@ -7,6 +7,35 @@
   transition:
     transform 0.3s,
     box-shadow 0.3s;
+  position: relative;
+  /* Минимальная высота для консистентности */
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Состояние загрузки */
+.loadingState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: 40px;
+  gap: 24px;
+}
+
+.spinner {
+  font-size: 48px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+.spinnerText {
+  font-size: 18px;
+  color: #7f8c8d;
+  font-weight: 500;
 }
 
 .card:hover {

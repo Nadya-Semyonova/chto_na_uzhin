@@ -38,12 +38,6 @@
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-.subtitle {
-  font-size: 14px;
-  color: #7f8c8d;
-  margin-top: 4px;
-}
-
 .ingredientList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));

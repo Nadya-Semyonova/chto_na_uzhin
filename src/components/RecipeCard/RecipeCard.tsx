@@ -1,19 +1,25 @@
+import type { Recipe } from '../../data/recipes';
 import styles from './RecipeCard.module.css';
 
-// Тип для рецепта (пока без API, просто заглушка)
-export interface Recipe {
-  id?: string;
-  title: string;
-  category: string;
-  imageUrl: string;
-  instructions: string;
-}
-
 interface RecipeCardProps {
-  recipe?: Recipe | null;
+  recipe?: Recipe; // ваш тип рецепта
+  isLoading?: boolean;
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
+export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => {
+  // Состояние загрузки
+  if (isLoading) {
+    return (
+      <div className={styles.card}>
+        <div className={styles.loadingState}>
+          <span className={styles.spinner}>⏳</span>
+          <span className={styles.spinnerText}>Ищем рецепт...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Пустое состояние (нет рецепта)
   if (!recipe) {
     return (
       <div className={styles.card}>
@@ -28,6 +34,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
     );
   }
 
+  // Состояние с рецептом
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -36,7 +43,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
           alt={recipe.title}
           className={styles.image}
           onError={(e) => {
-            // Если фото не загрузится, покажем заглушку
             e.currentTarget.src = 'https://via.placeholder.com/800x400?text=Фото+рецепта';
           }}
         />

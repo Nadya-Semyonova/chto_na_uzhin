@@ -62,7 +62,7 @@ function App() {
           />
         }
       >
-        <RecipeCard recipe={currentRecipe} />
+        <RecipeCard recipe={currentRecipe} isLoading={isLoading} />
         <div className={styles.buttonContainer}>
           <GenerateButton onClick={handleRandomRecipe} disabled={isLoading} variant="random" />
           {!isRandomMode && selectedIngredients.length > 0 && (
@@ -70,14 +70,6 @@ function App() {
           )}
         </div>
       </Layout>
-
-      {isLoading && (
-        <div className={styles.loadingOverlay}>
-          <div className={styles.loading}>
-            {/* Здесь можно добавить красивый спиннер */}⏳ Ищем рецепт...
-          </div>
-        </div>
-      )}
     </>
   );
 }
