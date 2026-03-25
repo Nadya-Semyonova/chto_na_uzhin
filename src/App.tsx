@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Layout } from './components/Layout';
 import { Sidebar } from './components/Sidebar';
-import { RecipeCard, type Recipe } from './components/RecipeCard';
+import { RecipeCard } from './components/RecipeCard';
 import { GenerateButton } from './components/GenerateButton';
-import { findRecipeByIngredients, getRandomRecipe } from './data/recipes';
+import { findRecipeByIngredients, getRandomRecipe, type Recipe } from './data/recipes';
 import styles from './App.module.css';
 
 function App() {
