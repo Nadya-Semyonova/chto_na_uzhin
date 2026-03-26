@@ -67,17 +67,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange, onGenerat
       </div>
 
       {selected.length > 0 && (
-        <div className={styles.fridgeFooter}>
-          <div className={styles.selectedCount}>Продуктов: {selected.length}</div>
-          <div className={styles.fridgeActions}>
-            <button className={styles.clearButton} onClick={handleClearAll}>
-              Очистить
-            </button>
-            <button className={styles.cookButton} onClick={onGenerateFromFridge}>
-              Приготовить!
-            </button>
-          </div>
-        </div>
+<div className={styles.fridgeFooter}>
+  <div className={styles.selectedCount}>Продуктов: {selected.length}</div>
+  <div className={styles.fridgeActions}>
+    <button 
+      className={`${styles.clearButton} ${styles.btnStyle5}`} 
+      onClick={handleClearAll}
+    >
+      Очистить
+    </button>
+    <button 
+      className={`${styles.cookButton} ${styles.btnStyle5}`} 
+      onClick={onGenerateFromFridge}
+    >
+      Приготовить!
+    </button>
+  </div>
+</div>
       )}
     </div>
   );
