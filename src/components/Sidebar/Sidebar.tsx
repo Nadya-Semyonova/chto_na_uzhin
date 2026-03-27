@@ -43,7 +43,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange, onGenerat
 
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.title}>Холодильник</h2>
+      <h2 className={styles.title}>Выбери, что есть в холодильнике:</h2>
 
       <div className={styles.ingredientList}>
         {Object.entries(groupedIngredients).map(([category, ingredients]) => (

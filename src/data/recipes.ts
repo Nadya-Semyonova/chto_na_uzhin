@@ -8,14 +8,25 @@ export interface Recipe {
   cookingTime?: number; // в минутах
   difficulty?: 'Легко' | 'Средне' | 'Сложно';
 }
-import defaultImage from '../shared/assets/images/default.jpg';
+import defaultImage from '../shared/assets/images/default.png';
+import cezarImage from '../shared/assets/images/cezar.jpg';
+import grecheskiiImage from '../shared/assets/images/grecheskii.jpg';
+import grechkasgribamiImage from '../shared/assets/images/grechka_s_gribami.jpg';
+import kaprezeImage from '../shared/assets/images/kapreze.jpg';
+import karbonaraImage from '../shared/assets/images/karbonara.jpg';
+import omletImage from '../shared/assets/images/omlet.jpg';
+import ovsyanoblinImage from '../shared/assets/images/ovsyanoblin.jpg';
+import percyImage from '../shared/assets/images/percy.jpg';
+import plovImage from '../shared/assets/images/plov.jpg';
+import sandwichImage from '../shared/assets/images/sendwich.jpg';
+import borshImage from '../shared/assets/images/borsh.jpg';
 // База рецептов
 export const RECIPES: Recipe[] = [
   {
     id: '1',
     title: 'Паста Карбонара',
     category: 'Итальянская кухня',
-    imageUrl: defaultImage,
+    imageUrl: karbonaraImage,
     instructions:
       'Отварите спагетти в подсоленной воде. Обжарьте бекон с чесноком. Смешайте яйца с сыром пармезан. Соедините горячие спагетти с беконом, добавьте яичную смесь и быстро перемешайте. Подавайте сразу же с черным перцем.',
     ingredients: ['спагетти', 'яйца', 'бекон', 'пармезан', 'чеснок', 'черный перец'],
@@ -26,7 +37,7 @@ export const RECIPES: Recipe[] = [
     id: '2',
     title: 'Омлет с овощами',
     category: 'Завтрак',
-    imageUrl: defaultImage,
+    imageUrl: omletImage,
     instructions:
       'Взбейте яйца с молоком. Нарежьте помидоры и перец кубиками. Обжарьте овощи на сковороде, залейте яичной смесью. Готовьте под крышкой 5-7 минут.',
     ingredients: ['яйца', 'молоко', 'помидоры', 'болгарский перец', 'лук', 'соль'],
@@ -37,7 +48,7 @@ export const RECIPES: Recipe[] = [
     id: '3',
     title: 'Греческий салат',
     category: 'Салаты',
-    imageUrl: defaultImage,
+    imageUrl: grecheskiiImage,
     instructions:
       'Нарежьте помидоры, огурцы и перец крупными кусками. Добавьте маслины и сыр фета. Заправьте оливковым маслом и посыпьте орегано.',
     ingredients: ['помидоры', 'огурцы', 'болгарский перец', 'лук', 'сыр фета', 'оливки', 'оливковое масло'],
@@ -48,7 +59,7 @@ export const RECIPES: Recipe[] = [
     id: '4',
     title: 'Гречка с грибами',
     category: 'Вегетарианское',
-    imageUrl: defaultImage,
+    imageUrl: grechkasgribamiImage,
     instructions:
       'Отварите гречку. Обжарьте лук с грибами. Смешайте с гречкой, добавьте сливочное масло.',
     ingredients: ['гречка', 'грибы', 'лук', 'сливочное масло', 'соль'],
@@ -59,7 +70,7 @@ export const RECIPES: Recipe[] = [
     id: '5',
     title: 'Борщ',
     category: 'Суп',
-    imageUrl: defaultImage,
+    imageUrl: borshImage,
     instructions:
       'Сварите мясной бульон. Обжарьте свеклу, морковь и лук. Добавьте в бульон нарезанный картофель и капусту, затем зажарку. Варите до готовности. Подавайте со сметаной и зеленью.',
     ingredients: ['свекла', 'капуста', 'картофель', 'морковь', 'лук', 'говядина', 'томатная паста', 'сметана'],
@@ -70,7 +81,7 @@ export const RECIPES: Recipe[] = [
     id: '6',
     title: 'Сэндвич с курицей и авокадо',
     category: 'Закуски',
-    imageUrl: defaultImage,
+    imageUrl: sandwichImage,
     instructions:
       'Поджарьте тосты. Смажьте их авокадо, размятым в пюре. Выложите листья салата, ломтики обжаренной курицы и помидоры. Накройте второй половинкой.',
     ingredients: ['хлеб', 'куриное филе', 'авокадо', 'помидор', 'листья салата', 'майонез'],
@@ -81,10 +92,10 @@ export const RECIPES: Recipe[] = [
     id: '7',
     title: 'Цезарь с креветками',
     category: 'Салаты',
-    imageUrl: defaultImage,
+    imageUrl: cezarImage,
     instructions:
-      'Обжарьте креветки с чесноком. Нарежьте салат романо или айсберг и смешайте с соусом Цезарь. Добавьте сухарики и креветки. Посыпьте пармезаном.',
-    ingredients: ['креветки', 'салат романо', 'пармезан', 'сухарики', 'соус цезарь', 'чеснок'],
+      'Обжарьте креветки с чесноком. Нарежьте салат романо или айсберг и смешайте с соусом Цезарь. Добавьте помидоры черри, сухарики и креветки. Посыпьте пармезаном.',
+    ingredients: ['креветки', 'салат романо', 'пармезан', 'сухарики', 'соус цезарь', 'помидор'],
     cookingTime: 20,
     difficulty: 'Средне',
   },
@@ -92,7 +103,7 @@ export const RECIPES: Recipe[] = [
     id: '8',
     title: 'Плов с курицей',
     category: 'Основные блюда',
-    imageUrl: defaultImage,
+    imageUrl: plovImage,
     instructions:
       'Обжарьте курицу до корочки минут 10. Добавьте лук и морковь и обжаривайте еще 10 мин. Всыпьте рис, залейте кипятком, сверху положите пару зубчиков чеснока, добавьте соль, перец по вкусу и специи для плова. Томите под крышкой, пока рис не впитает воду.',
     ingredients: ['рис', 'курица', 'морковь', 'лук', 'чеснок'],
@@ -103,7 +114,7 @@ export const RECIPES: Recipe[] = [
     id: '9',
     title: 'Овсяноблин',
     category: 'Завтрак',
-    imageUrl: defaultImage,
+    imageUrl: ovsyanoblinImage,
     instructions:
       'Смешайте яйцо, овсяные хлопья и молоко в блендере. Вылейте на разогретую сковороду. Жарьте с двух сторон. Начинка: творог, банан или сыр.',
     ingredients: ['овсяные хлопья', 'яйцо', 'молоко', 'творог', 'банан'],
@@ -114,7 +125,7 @@ export const RECIPES: Recipe[] = [
     id: '10',
     title: 'Капрезе',
     category: 'Салаты',
-    imageUrl: defaultImage,
+    imageUrl: kaprezeImage,
     instructions:
       'Нарежьте помидоры и моцареллу кружочками. Выложите, чередуя, на тарелку. Сбрызните оливковым маслом, добавьте листья базилика и бальзамический уксус.',
     ingredients: ['помидоры', 'моцарелла', 'базилик', 'оливковое масло', 'бальзамический уксус'],
@@ -125,7 +136,7 @@ export const RECIPES: Recipe[] = [
     id: '11',
     title: 'Фаршированные перцы',
     category: 'Основные блюда',
-    imageUrl: defaultImage,
+    imageUrl: percyImage,
     instructions:
       'Обжарьте лук и морковь, отварите рис. Смешайте фарш с отварным рисом, луком и морковью. Начините болгарские перцы. Полейте томатным соусом или соком и тушите 40-50 минут.',
     ingredients: ['болгарский перец', 'фарш', 'рис', 'лук', 'морковь', 'томатный сок'],

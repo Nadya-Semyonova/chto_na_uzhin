@@ -58,13 +58,16 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => 
   // Состояние с рецептом
   return (
 <div className={styles.card}>
-      <div className={styles.imageContainer}>
-        <img
-          src={recipe.imageUrl}
-          alt={recipe.title}
-          className={styles.image}
-        />
-      </div>
+  <div className={styles.imageContainer}>
+    <img
+      src={recipe.imageUrl}
+      alt={recipe.title}
+      className={styles.image}
+    />
+    <div className={styles.attribution}>
+      <a href="http://www.freepik.com">Designed by Freepik</a>
+    </div>
+  </div>
       <div className={styles.content}>
         <h2 className={styles.title}>{recipe.title}</h2>
         

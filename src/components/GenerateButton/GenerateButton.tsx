@@ -17,7 +17,7 @@ export const GenerateButton: React.FC<GenerateButtonProps> = ({
       {variant === 'random' ? (
         <>
           <span className={styles.icon}></span>
-          Что на ужин?
+          Дорогая, что на ужин?
           <span className={styles.icon}></span>
         </>
       ) : (
