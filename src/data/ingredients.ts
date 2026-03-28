@@ -16,18 +16,18 @@ export const POPULAR_INGREDIENTS: Ingredient[] = [
   { id: 'грибы', name: 'Грибы', category: 'vegetables', icon: '' },
   { id: 'капуста', name: 'Капуста', category: 'vegetables', icon: '' },
   { id: 'огурец', name: 'Огурец', category: 'vegetables', icon: '' },
-  
+
   // Белки
   { id: 'курица', name: 'Курица', category: 'meat', icon: '' },
   { id: 'яйца', name: 'Яйца', category: 'other', icon: '' },
   { id: 'бекон', name: 'Бекон', category: 'meat', icon: '' },
   { id: 'фарш', name: 'Фарш', category: 'meat', icon: '' },
-  
+
   // Молочные
   { id: 'сыр', name: 'Сыр', category: 'dairy', icon: '' },
   { id: 'сливки', name: 'Сливки', category: 'dairy', icon: '' },
   { id: 'творог', name: 'Творог', category: 'dairy', icon: '' },
-  
+
   // Крупы и хлеб
   { id: 'рис', name: 'Рис', category: 'grains', icon: '' },
   { id: 'макароны', name: 'Макароны', category: 'grains', icon: '' },

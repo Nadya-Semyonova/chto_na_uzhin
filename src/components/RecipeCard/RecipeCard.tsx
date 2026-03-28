@@ -2,11 +2,12 @@ import type { Recipe } from '../../data/recipes';
 import styles from './RecipeCard.module.css';
 
 interface RecipeCardProps {
-  recipe?: Recipe | null; // ваш тип рецепта
+  recipe?: Recipe | null;
   isLoading?: boolean;
+  noRecipesMessage?: string;
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => {
+export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading, noRecipesMessage }) => {
   // Состояние загрузки
   if (isLoading) {
     return (
@@ -14,6 +15,19 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => 
         <div className={styles.loadingState}>
           <span className={styles.spinner}>⏳</span>
           <span className={styles.spinnerText}>Ищем рецепт...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Состояние "нет рецептов"
+  if (noRecipesMessage) {
+    return (
+      <div className={styles.card}>
+        <div className={styles.placeholder}>
+          <span className={styles.placeholderIcon}>😕</span>
+          <h3 className={styles.placeholderTitle}>Рецептов не найдено</h3>
+          <p className={styles.placeholderText}>{noRecipesMessage}</p>
         </div>
       </div>
     );
@@ -33,7 +47,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => 
       </div>
     );
   }
- // Функция для отображения сложности в виде звездочек
+
+  // Функция для отображения сложности в виде звездочек
   const renderDifficulty = (difficulty?: string) => {
     switch (difficulty) {
       case 'Легко':
@@ -55,29 +70,24 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => 
     const mins = minutes % 60;
     return `${hours} ч ${mins} мин`;
   };
+
   // Состояние с рецептом
   return (
-<div className={styles.card}>
-  <div className={styles.imageContainer}>
-    <img
-      src={recipe.imageUrl}
-      alt={recipe.title}
-      className={styles.image}
-    />
-    <div className={styles.attribution}>
-      <a href="http://www.freepik.com">Designed by Freepik</a>
-    </div>
-  </div>
+    <div className={styles.card}>
+      <div className={styles.imageContainer}>
+        <img src={recipe.imageUrl} alt={recipe.title} className={styles.image} />
+        <div className={styles.attribution}>
+          <a href="http://www.freepik.com">Designed by Freepik</a>
+        </div>
+      </div>
       <div className={styles.content}>
         <h2 className={styles.title}>{recipe.title}</h2>
-        
+
         <div className={styles.meta}>
           <span className={styles.category}>{recipe.category}</span>
           <div className={styles.metaInfo}>
             {recipe.cookingTime && (
-              <span className={styles.cookingTime}>
-                ⏱️ {formatCookingTime(recipe.cookingTime)}
-              </span>
+              <span className={styles.cookingTime}>⏱️ {formatCookingTime(recipe.cookingTime)}</span>
             )}
             {recipe.difficulty && (
               <span className={styles.difficulty}>
@@ -104,5 +114,3 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading }) => 
     </div>
   );
 };
-
-

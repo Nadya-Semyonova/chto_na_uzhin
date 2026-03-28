@@ -9,9 +9,14 @@ import {
 interface SidebarProps {
   onIngredientsChange?: (selectedIngredients: string[]) => void;
   onGenerateFromFridge?: () => void;
+  selectedCount?: number;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange, onGenerateFromFridge }) => {
+export const Sidebar: React.FC<SidebarProps> = ({
+  onIngredientsChange,
+  onGenerateFromFridge,
+  selectedCount = 0,
+}) => {
   const [selected, setSelected] = useState<string[]>([]);
 
   const handleIngredientToggle = (ingredient: string) => {
@@ -41,6 +46,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange, onGenerat
     {} as Record<string, Ingredient[]>
   );
 
+  // Используем selectedCount для проверки количества (или selected.length, если selectedCount не передан)
+  const currentCount = selectedCount > 0 ? selectedCount : selected.length;
+  const isGenerateDisabled = currentCount < 3;
+
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>Выбери, что есть в холодильнике:</h2>
@@ -67,23 +76,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ onIngredientsChange, onGenerat
       </div>
 
       {selected.length > 0 && (
-<div className={styles.fridgeFooter}>
-  <div className={styles.selectedCount}>Продуктов: {selected.length}</div>
-  <div className={styles.fridgeActions}>
-    <button 
-      className={`${styles.clearButton} ${styles.btnStyle5}`} 
-      onClick={handleClearAll}
-    >
-      Очистить
-    </button>
-    <button 
-      className={`${styles.cookButton} ${styles.btnStyle5}`} 
-      onClick={onGenerateFromFridge}
-    >
-      Приготовить!
-    </button>
-  </div>
-</div>
+        <div className={styles.fridgeFooter}>
+          <div className={styles.selectedCount}>Продуктов: {currentCount}</div>
+          <div className={styles.fridgeActions}>
+            <button
+              className={`${styles.clearButton} ${styles.btnStyle5}`}
+              onClick={handleClearAll}
+            >
+              Очистить
+            </button>
+            <button
+              className={`${styles.cookButton} ${styles.btnStyle5}`}
+              onClick={onGenerateFromFridge}
+              disabled={isGenerateDisabled}
+            >
+              Приготовить!
+            </button>
+          </div>
+          {isGenerateDisabled && (
+            <div className={styles.warningMessage}>Выберите минимум 3 ингредиента</div>
+          )}
+        </div>
       )}
     </div>
   );

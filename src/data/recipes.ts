@@ -8,7 +8,7 @@ export interface Recipe {
   cookingTime?: number; // в минутах
   difficulty?: 'Легко' | 'Средне' | 'Сложно';
 }
-import defaultImage from '../shared/assets/images/default.png';
+
 import cezarImage from '../shared/assets/images/saladcezar.jpg';
 import grecheskiiImage from '../shared/assets/images/grecheskii.jpg';
 import grechkasgribamiImage from '../shared/assets/images/grechka_s_gribami.jpg';
@@ -18,7 +18,7 @@ import omletImage from '../shared/assets/images/omlet.jpg';
 import ovsyanoblinImage from '../shared/assets/images/ovsyanoblin.jpg';
 import percyImage from '../shared/assets/images/percy.jpg';
 import plovImage from '../shared/assets/images/plov.jpg';
-import sandwichImage from '../shared/assets/images/sendwich.jpg';
+import sandwichImage from '../shared/assets/images/sandwich.jpg';
 import borshImage from '../shared/assets/images/borsh.jpg';
 import brauniImage from '../shared/assets/images/brauni.jpg';
 import pumpkinImage from '../shared/assets/images/pumpkinsoup.jpg';
@@ -26,6 +26,7 @@ import syrnikiImage from '../shared/assets/images/syrniki.jpg';
 import rizottoImage from '../shared/assets/images/rizotto.jpg';
 import okroshkaImage from '../shared/assets/images/okroshka.jpg';
 import kartofelImage from '../shared/assets/images/kartofel.jpg';
+
 // База рецептов
 export const RECIPES: Recipe[] = [
   {
@@ -90,7 +91,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: sandwichImage,
     instructions:
       'Поджарьте тосты. Смажьте их авокадо, размятым в пюре. Выложите листья салата, ломтики обжаренной курицы и помидоры. Накройте второй половинкой хлеба.',
-   ingredients: ['хлеб', 'курица', 'авокадо', 'помидор', 'салат', 'майонез'],
+    ingredients: ['хлеб', 'курица', 'авокадо', 'помидор', 'салат', 'майонез'],
     cookingTime: 15,
     difficulty: 'Легко',
   },
@@ -134,7 +135,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: kaprezeImage,
     instructions:
       'Нарежьте помидоры и сыр моцарелла кружочками. Выложите, чередуя, на тарелку. Сбрызните оливковым маслом, добавьте листья базилика и бальзамический уксус.',
-   ingredients: ['помидор', 'сыр', 'базилик'],
+    ingredients: ['помидор', 'сыр', 'базилик'],
     cookingTime: 5,
     difficulty: 'Легко',
   },
@@ -156,7 +157,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: brauniImage,
     instructions:
       'Растопите шоколад со сливочным маслом на водяной бане или в микроволновке. Взбейте яйца с сахаром. Соедините смеси, добавьте муку. Выпекайте 25 минут. При проверке зубочисткой середина должна остаться влажной.',
-ingredients: ['шоколад', 'яйца', 'мука'],
+    ingredients: ['шоколад', 'яйца', 'мука'],
     cookingTime: 35,
     difficulty: 'Средне',
   },
@@ -178,7 +179,7 @@ ingredients: ['шоколад', 'яйца', 'мука'],
     imageUrl: syrnikiImage,
     instructions:
       'Смешайте творог, яйцо, муку и сахар. Сформируйте сырники. Обжарьте на сливочном масле с двух сторон до румяной корочки.',
- ingredients: ['творог', 'яйца', 'мука'],
+    ingredients: ['творог', 'яйца', 'мука'],
     cookingTime: 20,
     difficulty: 'Легко',
   },
@@ -189,7 +190,7 @@ ingredients: ['шоколад', 'яйца', 'мука'],
     imageUrl: rizottoImage,
     instructions:
       'Сварите куринный больон. Обжарьте лук и рис арборио. Постепенно добавляйте бульон, помешивая, после того как рис набухнет, можно добавить стакан белого сухого вина до полного выпаривания. В конце добавьте отдельно обжаренные грибы, пармезан и сливочное масло.',
-   ingredients: ['рис', 'грибы', 'лук', 'вино', 'сыр', 'курица'],
+    ingredients: ['рис', 'грибы', 'лук', 'вино', 'сыр', 'курица'],
     cookingTime: 35,
     difficulty: 'Средне',
   },
@@ -211,35 +212,57 @@ ingredients: ['шоколад', 'яйца', 'мука'],
     imageUrl: kartofelImage,
     instructions:
       'Нарежьте картофель дольками. Смешайте с растительным маслом, паприкой, чесноком и солью. Запекайте в духовке 35 минут до хрустящей корочки.',
-   ingredients: ['картофель', 'чеснок'],
+    ingredients: ['картофель', 'чеснок'],
     cookingTime: 40,
     difficulty: 'Легко',
   },
 ];
 
-// Функция для получения рецепта по ингредиентам
-export const findRecipeByIngredients = (
+// интерфейс для рецепта с процентом совпадения
+export interface RecipeWithMatch extends Recipe {
+  matchPercentage: number;
+  matchCount: number;
+}
+
+// Функция для поиска всех подходящих рецептов
+export const findMatchingRecipes = (
   selectedIngredients: string[],
   recipes: Recipe[] = RECIPES
-): Recipe | null => {
-  if (selectedIngredients.length === 0) return null;
+): RecipeWithMatch[] => {
+  if (selectedIngredients.length === 0) return [];
 
-  // Находим рецепты, которые можно приготовить из выбранных ингредиентов
-  const possibleRecipes = recipes.filter((recipe) => {
-    // Проверяем, есть ли все необходимые ингредиенты в холодильнике
-    return recipe.ingredients.every((ingredient) => selectedIngredients.includes(ingredient));
+  const recipesWithMatches: RecipeWithMatch[] = [];
+
+  recipes.forEach((recipe) => {
+    // Считаем количество совпавших ингредиентов
+    const matchCount = recipe.ingredients.filter((ingredient) =>
+      selectedIngredients.includes(ingredient)
+    ).length;
+
+    // Пропускаем рецепты без совпадений
+    if (matchCount === 0) return;
+
+    // Считаем процент совпадения
+    const matchPercentage = (matchCount / recipe.ingredients.length) * 100;
+
+    recipesWithMatches.push({
+      ...recipe,
+      matchPercentage,
+      matchCount,
+    });
   });
 
-  if (possibleRecipes.length === 0) {
-    // Если нет точных совпадений, ищем рецепты с максимальным совпадением
-    return findBestMatchingRecipe(selectedIngredients, recipes);
-  }
-
-  // Возвращаем случайный рецепт из возможных
-  return possibleRecipes[Math.floor(Math.random() * possibleRecipes.length)];
+  // Сортируем по проценту совпадения (от большего к меньшему)
+  return recipesWithMatches.sort((a, b) => b.matchPercentage - a.matchPercentage);
 };
 
-// Функция для поиска рецепта с максимальным совпадением ингредиентов
+// Функция для получения случайного рецепта
+export const getRandomRecipe = (recipes: Recipe[] = RECIPES): Recipe => {
+  const randomIndex = Math.floor(Math.random() * recipes.length);
+  return recipes[randomIndex];
+};
+
+// Функция для поиска рецепта с максимальным совпадением (если нужно)
 export const findBestMatchingRecipe = (
   selectedIngredients: string[],
   recipes: Recipe[] = RECIPES
@@ -263,7 +286,24 @@ export const findBestMatchingRecipe = (
   return bestRecipe;
 };
 
-// Функция для получения случайного рецепта
-export const getRandomRecipe = (recipes: Recipe[] = RECIPES): Recipe => {
-  return recipes[Math.floor(Math.random() * recipes.length)];
+// Функция для поиска рецепта по ингредиентам (точное совпадение)
+export const findRecipeByIngredients = (
+  selectedIngredients: string[],
+  recipes: Recipe[] = RECIPES
+): Recipe | null => {
+  if (selectedIngredients.length === 0) return null;
+
+  // Находим рецепты, которые можно приготовить из выбранных ингредиентов
+  const possibleRecipes = recipes.filter((recipe) => {
+    // Проверяем, есть ли все необходимые ингредиенты в холодильнике
+    return recipe.ingredients.every((ingredient) => selectedIngredients.includes(ingredient));
+  });
+
+  if (possibleRecipes.length === 0) {
+    // Если нет точных совпадений, ищем рецепты с максимальным совпадением
+    return findBestMatchingRecipe(selectedIngredients, recipes);
+  }
+
+  // Возвращаем случайный рецепт из возможных
+  return possibleRecipes[Math.floor(Math.random() * possibleRecipes.length)];
 };
