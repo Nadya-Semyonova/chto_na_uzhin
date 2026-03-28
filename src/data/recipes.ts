@@ -9,7 +9,7 @@ export interface Recipe {
   difficulty?: 'Легко' | 'Средне' | 'Сложно';
 }
 import defaultImage from '../shared/assets/images/default.png';
-import cezarImage from '../shared/assets/images/cezar.jpg';
+import cezarImage from '../shared/assets/images/saladcezar.jpg';
 import grecheskiiImage from '../shared/assets/images/grecheskii.jpg';
 import grechkasgribamiImage from '../shared/assets/images/grechka_s_gribami.jpg';
 import kaprezeImage from '../shared/assets/images/kapreze.jpg';
@@ -20,6 +20,12 @@ import percyImage from '../shared/assets/images/percy.jpg';
 import plovImage from '../shared/assets/images/plov.jpg';
 import sandwichImage from '../shared/assets/images/sendwich.jpg';
 import borshImage from '../shared/assets/images/borsh.jpg';
+import brauniImage from '../shared/assets/images/brauni.jpg';
+import pumpkinImage from '../shared/assets/images/pumpkinsoup.jpg';
+import syrnikiImage from '../shared/assets/images/syrniki.jpg';
+import rizottoImage from '../shared/assets/images/rizotto.jpg';
+import okroshkaImage from '../shared/assets/images/okroshka.jpg';
+import kartofelImage from '../shared/assets/images/kartofel.jpg';
 // База рецептов
 export const RECIPES: Recipe[] = [
   {
@@ -40,7 +46,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: omletImage,
     instructions:
       'Взбейте яйца с молоком. Нарежьте помидоры и перец кубиками. Обжарьте овощи на сковороде, залейте яичной смесью. Готовьте под крышкой 5-7 минут.',
-    ingredients: ['яйца', 'молоко', 'помидоры', 'болгарский перец', 'лук', 'соль'],
+    ingredients: ['яйцо', 'молоко', 'помидор', 'болгарский перец', 'лук', 'соль'],
     cookingTime: 15,
     difficulty: 'Легко',
   },
@@ -51,7 +57,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: grecheskiiImage,
     instructions:
       'Нарежьте помидоры, огурцы и перец крупными кусками. Добавьте маслины и сыр фета. Заправьте оливковым маслом и посыпьте орегано.',
-    ingredients: ['помидоры', 'огурцы', 'болгарский перец', 'лук', 'сыр фета', 'оливки', 'оливковое масло'],
+    ingredients: ['помидор', 'огурец', 'болгарский перец', 'лук', 'сыр фета', 'оливки', 'оливковое масло'],
     cookingTime: 10,
     difficulty: 'Легко',
   },
@@ -83,8 +89,8 @@ export const RECIPES: Recipe[] = [
     category: 'Закуски',
     imageUrl: sandwichImage,
     instructions:
-      'Поджарьте тосты. Смажьте их авокадо, размятым в пюре. Выложите листья салата, ломтики обжаренной курицы и помидоры. Накройте второй половинкой.',
-    ingredients: ['хлеб', 'куриное филе', 'авокадо', 'помидор', 'листья салата', 'майонез'],
+      'Поджарьте тосты. Смажьте их авокадо, размятым в пюре. Выложите листья салата, ломтики обжаренной курицы и помидоры. Накройте второй половинкой хлеба.',
+    ingredients: ['хлеб', 'курица', 'авокадо', 'помидор', 'листья салата', 'майонез'],
     cookingTime: 15,
     difficulty: 'Легко',
   },
@@ -94,8 +100,8 @@ export const RECIPES: Recipe[] = [
     category: 'Салаты',
     imageUrl: cezarImage,
     instructions:
-      'Обжарьте креветки с чесноком. Нарежьте салат романо или айсберг и смешайте с соусом Цезарь. Добавьте помидоры черри, сухарики и креветки. Посыпьте пармезаном.',
-    ingredients: ['креветки', 'салат романо', 'пармезан', 'сухарики', 'соус цезарь', 'помидор'],
+      'Обжарьте креветки с чесноком. Добавьте в майонез, чайную ложку горчицы. Нарежьте салат романо или айсберг и смешайте с соусом. Добавьте помидоры черри, сухарики и креветки. Посыпьте пармезаном.',
+    ingredients: ['креветки', 'листья салата', 'пармезан', 'сухарики', 'майонез','горчица', 'помидор'],
     cookingTime: 20,
     difficulty: 'Средне',
   },
@@ -128,7 +134,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: kaprezeImage,
     instructions:
       'Нарежьте помидоры и моцареллу кружочками. Выложите, чередуя, на тарелку. Сбрызните оливковым маслом, добавьте листья базилика и бальзамический уксус.',
-    ingredients: ['помидоры', 'моцарелла', 'базилик', 'оливковое масло', 'бальзамический уксус'],
+    ingredients: ['помидор', 'моцарелла', 'базилик', 'оливковое масло', 'бальзамический уксус'],
     cookingTime: 5,
     difficulty: 'Легко',
   },
@@ -139,7 +145,7 @@ export const RECIPES: Recipe[] = [
     imageUrl: percyImage,
     instructions:
       'Обжарьте лук и морковь, отварите рис. Смешайте фарш с отварным рисом, луком и морковью. Начините болгарские перцы. Полейте томатным соусом или соком и тушите 40-50 минут.',
-    ingredients: ['болгарский перец', 'фарш', 'рис', 'лук', 'морковь', 'томатный сок'],
+    ingredients: ['болгарский перец', 'фарш', 'рис', 'лук', 'морковь', 'томатная паста'],
     cookingTime: 60,
     difficulty: 'Средне',
   },
@@ -147,10 +153,10 @@ export const RECIPES: Recipe[] = [
     id: '12',
     title: 'Брауни',
     category: 'Десерты',
-    imageUrl: defaultImage,
+    imageUrl: brauniImage,
     instructions:
       'Растопите шоколад со сливочным маслом на водяной бане или в микроволновке. Взбейте яйца с сахаром. Соедините смеси, добавьте муку. Выпекайте 25 минут. При проверке зубочисткой середина должна остаться влажной.',
-    ingredients: ['темный шоколад', 'сливочное масло', 'сахар', 'яйца', 'мука'],
+    ingredients: ['темный шоколад', 'сливочное масло', 'сахар', 'яйцо', 'мука'],
     cookingTime: 35,
     difficulty: 'Средне',
   },
@@ -158,10 +164,10 @@ export const RECIPES: Recipe[] = [
     id: '13',
     title: 'Суп-пюре из тыквы',
     category: 'Суп',
-    imageUrl: defaultImage,
+    imageUrl: pumpkinImage,
     instructions:
-      'Обжарьте лук и тыкву с чесноком. Добавьте бульон и варите до мягкости. Измельчите блендером. Влейте сливки и прогрейте. Подавайте с тыквенными семечками.',
-    ingredients: ['тыква', 'лук', 'чеснок', 'сливки', 'куриный бульон', 'тыквенные семечки'],
+      'Сварите куринный бульон. Обжарьте лук и тыкву с чесноком. Добавьте бульон и варите до мягкости. Измельчите блендером. Влейте сливки и прогрейте. Поджарьте хлеб и покрошите его на сухарики, подавайте суп с сухариками.',
+    ingredients: ['тыква', 'лук', 'чеснок', 'сливки', 'курица', 'хлеб'],
     cookingTime: 30,
     difficulty: 'Легко',
   },
@@ -169,7 +175,7 @@ export const RECIPES: Recipe[] = [
     id: '14',
     title: 'Сырники',
     category: 'Завтрак',
-    imageUrl: defaultImage,
+    imageUrl: syrnikiImage,
     instructions:
       'Смешайте творог, яйцо, муку и сахар. Сформируйте сырники. Обжарьте на сливочном масле с двух сторон до румяной корочки.',
     ingredients: ['творог', 'яйцо', 'мука', 'сахар'],
@@ -180,10 +186,10 @@ export const RECIPES: Recipe[] = [
     id: '15',
     title: 'Ризотто с грибами',
     category: 'Итальянская кухня',
-    imageUrl: defaultImage,
+    imageUrl: rizottoImage,
     instructions:
-      'Обжарьте лук и рис арборио. Постепенно добавляйте бульон, помешивая, после того как рис набухнет, добавьте стакан белого вина до полного выпаривания. В конце добавьте отдельно обжаренные грибы, пармезан и сливочное масло.',
-    ingredients: ['рис арборио', 'шампиньоны', 'лук', 'белое вино', 'пармезан', 'бульон'],
+      'Сварите куринный больон. Обжарьте лук и рис арборио. Постепенно добавляйте бульон, помешивая, после того как рис набухнет, можно добавить стакан белого сухого вина до полного выпаривания. В конце добавьте отдельно обжаренные грибы, пармезан и сливочное масло.',
+    ingredients: ['рис арборио', 'грибы', 'лук', 'белое вино', 'пармезан', 'курица' ],
     cookingTime: 35,
     difficulty: 'Средне',
   },
@@ -191,10 +197,10 @@ export const RECIPES: Recipe[] = [
     id: '16',
     title: 'Окрошка',
     category: 'Суп',
-    imageUrl: defaultImage,
+    imageUrl: okroshkaImage,
     instructions:
       'Нарежьте кубиками варенный картофель, свежие огурцы, редис, варенные яйца и докторскую колбасу. Залейте квасом или кефиром. Добавьте горчицу, хрен и зелень.',
-    ingredients: ['квас', 'картофель', 'огурцы', 'редис', 'яйца', 'колбаса', 'укроп', 'горчица', 'хрен'],
+    ingredients: ['квас', 'картофель', 'огурец', 'редис', 'яйцо', 'колбаса', 'укроп', 'горчица', 'хрен'],
     cookingTime: 20,
     difficulty: 'Легко',
   },
@@ -202,7 +208,7 @@ export const RECIPES: Recipe[] = [
     id: '17',
     title: 'Картофель по-деревенски',
     category: 'Гарнир',
-    imageUrl: defaultImage,
+    imageUrl: kartofelImage,
     instructions:
       'Нарежьте картофель дольками. Смешайте с растительным маслом, паприкой, чесноком и солью. Запекайте в духовке 35 минут до хрустящей корочки.',
     ingredients: ['картофель', 'растительное масло', 'паприка', 'чеснок', 'розмарин'],
