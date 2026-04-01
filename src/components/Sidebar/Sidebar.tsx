@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import styles from './Sidebar.module.css';
 import {
   POPULAR_INGREDIENTS,
@@ -12,6 +12,8 @@ interface SidebarProps {
   selectedCount?: number;
 }
 
+const MIN_INGREDIENTS = 3;
+
 export const Sidebar: React.FC<SidebarProps> = ({
   onIngredientsChange,
   onGenerateFromFridge,
@@ -19,36 +21,55 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const [selected, setSelected] = useState<string[]>([]);
 
-  const handleIngredientToggle = (ingredient: string) => {
-    setSelected((prev) => {
-      const newSelected = prev.includes(ingredient)
-        ? prev.filter((i) => i !== ingredient)
-        : [...prev, ingredient];
-      onIngredientsChange?.(newSelected);
-      return newSelected;
-    });
-  };
 
-  const handleClearAll = () => {
-    setSelected([]);
-    onIngredientsChange?.([]);
-  };
+  const currentCount = selectedCount > 0 ? selectedCount : selected.length;
+  const isGenerateDisabled = currentCount < MIN_INGREDIENTS;
 
-  // Группируем ингредиенты по категориям
-  const groupedIngredients = POPULAR_INGREDIENTS.reduce(
-    (acc, ingredient) => {
-      if (!acc[ingredient.category]) {
-        acc[ingredient.category] = [];
-      }
-      acc[ingredient.category].push(ingredient);
-      return acc;
+  // Группировка ингредиентов по категориям
+  const groupedIngredients = useMemo(() => {
+    return POPULAR_INGREDIENTS.reduce(
+      (acc, ingredient) => {
+        const category = ingredient.category;
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(ingredient);
+        return acc;
+      },
+      {} as Record<string, Ingredient[]>
+    );
+  }, []);
+
+  // Обработчики событий
+  const handleIngredientToggle = useCallback(
+    (ingredientId: string) => {
+      setSelected((prev) => {
+        const newSelected = prev.includes(ingredientId)
+          ? prev.filter((id) => id !== ingredientId)
+          : [...prev, ingredientId];
+
+        onIngredientsChange?.(newSelected);
+        return newSelected;
+      });
     },
-    {} as Record<string, Ingredient[]>
+    [onIngredientsChange]
   );
 
-  // Используем selectedCount для проверки количества (или selected.length, если selectedCount не передан)
-  const currentCount = selectedCount > 0 ? selectedCount : selected.length;
-  const isGenerateDisabled = currentCount < 3;
+  const handleClearAll = useCallback(() => {
+    setSelected([]);
+    onIngredientsChange?.([]);
+  }, [onIngredientsChange]);
+
+  // Проверка, выбран ли ингредиент
+  const isIngredientSelected = useCallback(
+    (ingredientId: string) => {
+      return selected.includes(ingredientId);
+    },
+    [selected]
+  );
+
+  // Если нет выбранных ингредиентов, показываем только список
+  const showFooter = selected.length > 0;
 
   return (
     <div className={styles.sidebar}>
@@ -56,45 +77,55 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       <div className={styles.ingredientList}>
         {Object.entries(groupedIngredients).map(([category, ingredients]) => (
-          <div key={category} className={styles.category}>
+          <div key={category} className={styles.categoryGroup}>
             <h3 className={styles.categoryTitle}>
               {INGREDIENT_CATEGORIES[category as keyof typeof INGREDIENT_CATEGORIES]}
             </h3>
-            {ingredients.map((ingredient) => (
-              <label key={ingredient.id} className={styles.ingredientItem}>
-                <input
-                  type="checkbox"
-                  className={styles.checkbox}
-                  checked={selected.includes(ingredient.id)}
-                  onChange={() => handleIngredientToggle(ingredient.id)}
-                />
-                <span className={styles.label}>{ingredient.name}</span>
-              </label>
-            ))}
+            <div className={styles.ingredientsGrid}>
+              {ingredients.map((ingredient) => (
+                <label key={ingredient.id} className={styles.ingredientItem}>
+                  <input
+                    type="checkbox"
+                    className={styles.checkbox}
+                    checked={isIngredientSelected(ingredient.id)}
+                    onChange={() => handleIngredientToggle(ingredient.id)}
+                  />
+                  <span className={styles.label}>{ingredient.name}</span>
+                </label>
+              ))}
+            </div>
           </div>
         ))}
       </div>
 
-      {selected.length > 0 && (
+      {showFooter && (
         <div className={styles.fridgeFooter}>
-          <div className={styles.selectedCount}>Продуктов: {currentCount}</div>
+          <div className={styles.selectedCount}>
+            Продуктов: {currentCount}
+          </div>
+
           <div className={styles.fridgeActions}>
             <button
-              className={`${styles.clearButton} ${styles.btnStyle5}`}
+              className={styles.clearButton}
               onClick={handleClearAll}
+              aria-label="Очистить все выбранные ингредиенты"
             >
               Очистить
             </button>
             <button
-              className={`${styles.cookButton} ${styles.btnStyle5}`}
+              className={styles.cookButton}
               onClick={onGenerateFromFridge}
               disabled={isGenerateDisabled}
+              aria-label="Приготовить блюдо из выбранных ингредиентов"
             >
               Приготовить!
             </button>
           </div>
+
           {isGenerateDisabled && (
-            <div className={styles.warningMessage}>Выберите минимум 3 ингредиента</div>
+            <div className={styles.warningMessage} role="alert">
+              Выберите минимум {MIN_INGREDIENTS} ингредиента
+            </div>
           )}
         </div>
       )}

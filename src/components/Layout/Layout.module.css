@@ -1,8 +1,8 @@
 .layout {
   display: grid;
-  grid-template-columns: minmax(250px, 1fr) 3fr; /* Сайдбар от 250px до 1 части, контент 3 части */
+  grid-template-columns: minmax(250px, 1fr) 3fr;
   min-height: 100vh;
-  background: white;
+  background: var(--bg-white);
   background-image:
     linear-gradient(to right, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
@@ -21,18 +21,18 @@
     0 0,
     0 0,
     0 0;
-  font-family: "Raleway", Arial, sans-serif;;
+  font-family: var(--font-primary);
 }
 
 .sidebar {
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-  padding: 24px 20px;
+  padding: var(--spacing-xl) var(--spacing-lg);
   height: 100vh;
   overflow-y: auto;
-  position: sticky; 
+  position: sticky;
   top: 0;
-  align-self: start; 
+  align-self: start;
 }
 
 .mainContent {
@@ -40,7 +40,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: var(--spacing-3xl) var(--spacing-lg);
   min-height: 100vh;
 }
 
@@ -50,5 +50,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: var(--spacing-2xl);
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    max-height: 400px;
+    top: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .mainContent {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .container {
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .sidebar {
+    padding: var(--spacing-md);
+    max-height: 350px;
+  }
+
+  .mainContent {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .container {
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Оптимизация для больших экранов */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1000px;
+  }
+
+  .sidebar {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
 }

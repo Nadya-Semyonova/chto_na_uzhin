@@ -3,4 +3,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.hint {
+  font-size: 14px;
+  color: var(--color-secondary);
+  background: rgba(230, 126, 34, 0.1);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .buttonContainer {
+    margin-top: var(--spacing-sm);
+  }
+  
+  .hint {
+    font-size: 12px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 }

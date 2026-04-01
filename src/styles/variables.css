@@ -1,0 +1,75 @@
+:root {
+  /* ===== ЦВЕТА ===== */
+  /* Основные цвета */
+  --color-primary: #e884be;
+  --color-primary-dark: #dd6395;
+  --color-primary-light: #f1b6e7;
+  --color-secondary: #e67e22;
+  --color-secondary-light: #ff9a5e;
+  
+  /* Фоновые цвета */
+  --bg-white: #ffffff;
+  --bg-light: #faf7f2;
+  --bg-sidebar: linear-gradient(145deg, #e8eef2 0%, #d5dee5 100%);
+  --bg-card-hover: #f1b6e7;
+  
+  /* Текстовые цвета */
+  --text-dark: #2c3e50;
+  --text-gray: #34495e;
+  --text-light: #7f8c8d;
+  --text-muted: #95a5a6;
+  --text-white: #ffffff;
+  
+  /* Цвета границ */
+  --border-light: #979695;
+  --border-sidebar: #b0c0ce;
+  
+  /* Цвета для скроллбара */
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #e67e22;
+  --scrollbar-track-dark: #b0c0ce;
+  --scrollbar-thumb-dark: linear-gradient(135deg, #7f8c8d, #95a5a6);
+  
+  /* ===== ГРАДИЕНТЫ ===== */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  --gradient-secondary: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  --gradient-sidebar: linear-gradient(145deg, #e8eef2 0%, #d5dee5 100%);
+  
+  /* ===== ТЕНИ ===== */
+  --shadow-sm: 0 8px 20px rgba(230, 126, 34, 0.3);
+  --shadow-md: 0 12px 30px rgba(230, 126, 34, 0.4);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 30px 50px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-sidebar: 0 10px 25px rgba(0, 0, 0, 0.2);
+  --shadow-inset-light: inset 0 2px 5px rgba(255, 255, 255, 0.8);
+  --shadow-inset-dark: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  
+  /* ===== РАДИУСЫ ===== */
+  --radius-sm: 8px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --radius-xl: 30px;
+  --radius-full: 60px;
+  
+  /* ===== ОТСТУПЫ ===== */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+  
+  /* ===== ШРИФТЫ ===== */
+  --font-primary: 'Raleway', Arial, sans-serif;
+  --font-secondary: 'NotoSerif', Arial, Helvetica, sans-serif;
+  
+  /* ===== АНИМАЦИИ ===== */
+  --transition-fast: all 0.2s ease;
+  --transition-base: all 0.3s;
+  --transition-slow: all 0.5s;
+  
+  /* ===== Z-INDEX ===== */
+  --z-attribution: 2;
+}

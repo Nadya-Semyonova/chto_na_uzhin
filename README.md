@@ -88,19 +88,41 @@ chto_na_uzhin/
 │   │       ├── Layout.tsx
 │   │       ├── Layout.module.css
 │   │       └── index.ts
+│   │
+│   ├── styles/                        # Глобальные стили
+│   │   ├── variables.css              # CSS переменные
+│   │   ├── global.css                 # Глобальные/базовые стили
+│   │   └── index.css                  # Точка входа для глобальных стилей
+│   │
 │   ├── data/                          # Локальные данные
 │   │   ├── ingredients.ts             # Список ингредиентов
 │   │   ├── recipes.ts                 # База рецептов
 │   │   └── index.ts                   # Точка входа данных
+│   │
+│   ├── shared/                        # Общие ресурсы
+│   │   └── assets/                    # Статические файлы
+│   │       ├── fonts/                 # Локальные шрифты
+│   │       │ 
+│   │       └── images/                # Изображения
+│   │      
+│   │       
+│   │           
+│   │           
+│   │
 │   ├── App.tsx                        # Главный компонент
-│   ├── App.module.css                 # Стили приложения
+│   ├── App.module.css                 # Стили главного компонента
 │   ├── main.tsx                       # Точка входа
 │   └── vite-env.d.ts                  # Типы для Vite
+│
 ├── .eslintrc.json                     # Конфигурация ESLint
 ├── .prettierrc                        # Конфигурация Prettier
+├── .gitignore                         # Игнорируемые файлы Git
+├── index.html                         # HTML шаблон
 ├── package.json                       # Зависимости проекта
 ├── tsconfig.json                      # Настройки TypeScript
-└── vite.config.ts                     # Конфигурация Vite
+├── tsconfig.node.json                 # Настройки TypeScript для Node
+├── vite.config.ts                     # Конфигурация Vite
+└── README.md                          # Документация проекта
 ```
 
 # Планы по развитию
