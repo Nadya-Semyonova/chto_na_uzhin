@@ -1,5 +1,5 @@
 .card {
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -8,7 +8,6 @@
     transform 0.3s,
     box-shadow 0.3s;
   position: relative;
-  /* Минимальная высота для консистентности */
   min-height: 500px;
   display: flex;
   flex-direction: column;
@@ -33,6 +32,7 @@
 }
 
 .spinnerText {
+  font-family: "NotoSerif", Arial, Helvetica, sans-serif;
   font-size: 18px;
   color: #7f8c8d;
   font-weight: 500;
@@ -61,6 +61,7 @@
 .card:hover .image {
   transform: scale(1.05);
 }
+
 /* Стили для атрибуции */
 .attribution {
   position: absolute;
@@ -92,6 +93,7 @@
 }
 
 .title {
+  font-family: "NotoSerif", Arial, Helvetica, sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: #2c3e50;
