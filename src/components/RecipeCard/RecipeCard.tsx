@@ -9,10 +9,14 @@ interface RecipeCardProps {
 
 const renderDifficulty = (difficulty?: string) => {
   switch (difficulty) {
-    case 'Легко': return '⭐';
-    case 'Средне': return '⭐⭐';
-    case 'Сложно': return '⭐⭐⭐';
-    default: return '⭐';
+    case 'Легко':
+      return '⭐';
+    case 'Средне':
+      return '⭐⭐';
+    case 'Сложно':
+      return '⭐⭐⭐';
+    default:
+      return '⭐';
   }
 };
 
@@ -82,11 +86,7 @@ const RecipeContent = ({ recipe }: { recipe: Recipe }) => (
   </>
 );
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({
-  recipe,
-  isLoading,
-  noRecipesMessage
-}) => {
+export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading, noRecipesMessage }) => {
   // Состояние загрузки
   if (isLoading) {
     return (
@@ -100,9 +100,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   if (noRecipesMessage) {
     return (
       <div className={styles.card}>
-        <PlaceholderState
-          title="Рецептов не найдено"
-          text={noRecipesMessage} icon={''}        />
+        <PlaceholderState title="Рецептов не найдено" text={noRecipesMessage} icon={''} />
       </div>
     );
   }

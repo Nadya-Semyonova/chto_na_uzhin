@@ -5,10 +5,7 @@ interface GenerateButtonProps {
   disabled?: boolean;
 }
 
-export const GenerateButton: React.FC<GenerateButtonProps> = ({
-  onClick,
-  disabled = false,
-}) => {
+export const GenerateButton: React.FC<GenerateButtonProps> = ({ onClick, disabled = false }) => {
   return (
     <button className={styles.button} onClick={onClick} disabled={disabled}>
       Дорогая, что на ужин?

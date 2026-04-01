@@ -9,6 +9,7 @@
   min-height: 500px;
   display: flex;
   flex-direction: column;
+  z-index: 0;
 }
 
 .card:hover {
@@ -74,7 +75,7 @@
   position: absolute;
   bottom: var(--spacing-sm);
   right: var(--spacing-sm);
-  z-index: var(--z-attribution);
+  z-index: 1;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(4px);
   padding: 5px 10px;

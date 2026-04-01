@@ -53,6 +53,18 @@ Stylelint	17.3.0
 Пропсы: children
 Отвечает за: расположение боковой панели и контента
 
+# BottomSheet
+Выезжающая панель снизу для мобильной версии.
+Пропсы: isOpen, onClose, children
+Состояние: открыт/закрыт, позиция перетаскивания, анимация закрытия
+Отвечает за: отображение холодильника на мобильных устройствах, обработку свайпов для закрытия, блокировку скролла фона
+
+# BurgerMenu
+Бургер-меню для мобильной версии.
+Пропсы: isOpen, onClick
+Состояние: открыто/закрыто, анимация иконки
+Отвечает за: переключение видимости BottomSheet, анимацию превращения в крестик, отображение только на экранах ≤768px
+
 
 # для разработчиков
 После выполнения работы провести проверки:
@@ -72,21 +84,34 @@ npm run format
 chto_na_uzhin/
 ├── src/
 │   ├── components/                    # React компоненты
-│   │   ├── Sidebar/                   # Боковая панель с ингредиентами
-│   │   │   ├── Sidebar.tsx
-│   │   │   ├── Sidebar.module.css
+│   │   ├── BottomSheet/               # Выезжающая панель снизу (мобильная версия)
+│   │   │   ├── BottomSheet.tsx
+│   │   │   ├── BottomSheet.module.css
 │   │   │   └── index.ts
-│   │   ├── RecipeCard/                # Карточка рецепта
-│   │   │   ├── RecipeCard.tsx
-│   │   │   ├── RecipeCard.module.css
+│   │   │
+│   │   ├── BurgerMenu/                # Бургер-меню для мобильной версии
+│   │   │   ├── BurgerMenu.tsx
+│   │   │   ├── BurgerMenu.module.css
 │   │   │   └── index.ts
+│   │   │
 │   │   ├── GenerateButton/            # Кнопка генерации рецепта
 │   │   │   ├── GenerateButton.tsx
 │   │   │   ├── GenerateButton.module.css
 │   │   │   └── index.ts
-│   │   └── Layout/                    # Основной макет приложения
-│   │       ├── Layout.tsx
-│   │       ├── Layout.module.css
+│   │   │
+│   │   ├── Layout/                    # Основной макет приложения
+│   │   │   ├── Layout.tsx
+│   │   │   ├── Layout.module.css
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── RecipeCard/                # Карточка рецепта
+│   │   │   ├── RecipeCard.tsx
+│   │   │   ├── RecipeCard.module.css
+│   │   │   └── index.ts
+│   │   │
+│   │   └── Sidebar/                   # Боковая панель с ингредиентами
+│   │       ├── Sidebar.tsx
+│   │       ├── Sidebar.module.css
 │   │       └── index.ts
 │   │
 │   ├── styles/                        # Глобальные стили
@@ -140,5 +165,5 @@ chto_na_uzhin/
 
 # Статус проекта: В активной разработке
 
-*Последнее обновление документации: 2026-03-26*
+*Последнее обновление документации: 2026-04-01*
 

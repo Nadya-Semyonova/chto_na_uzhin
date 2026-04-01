@@ -21,7 +21,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const [selected, setSelected] = useState<string[]>([]);
 
-
   const currentCount = selectedCount > 0 ? selectedCount : selected.length;
   const isGenerateDisabled = currentCount < MIN_INGREDIENTS;
 
@@ -100,9 +99,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {showFooter && (
         <div className={styles.fridgeFooter}>
-          <div className={styles.selectedCount}>
-            Продуктов: {currentCount}
-          </div>
+          <div className={styles.selectedCount}>Продуктов: {currentCount}</div>
 
           <div className={styles.fridgeActions}>
             <button

@@ -33,7 +33,7 @@
   .buttonContainer {
     margin-top: var(--spacing-sm);
   }
-  
+
   .hint {
     font-size: 12px;
     padding: var(--spacing-xs) var(--spacing-sm);

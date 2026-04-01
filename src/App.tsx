@@ -1,8 +1,10 @@
+/* eslint-disable no-trailing-spaces */
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Layout } from './components/Layout';
 import { Sidebar } from './components/Sidebar';
 import { RecipeCard } from './components/RecipeCard';
 import { GenerateButton } from './components/GenerateButton';
+import { BottomSheet } from './components/BottomSheet';
 import {
   findMatchingRecipes,
   getRandomRecipe,
@@ -14,6 +16,7 @@ import styles from './App.module.css';
 // Константы
 const MIN_INGREDIENTS = 3;
 const LOADING_DELAY_MS = 800;
+const MOBILE_BREAKPOINT = 768;
 
 // Типы для состояний
 type AppMode = 'random' | 'fridge';
@@ -27,6 +30,25 @@ function App() {
   const [matchingRecipes, setMatchingRecipes] = useState<RecipeWithMatch[]>([]);
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [errorMessage, setErrorMessage] = useState<string>('');
+
+  // Состояние для Bottom Sheet
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
+
+  // Отслеживаем изменение размера окна
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= MOBILE_BREAKPOINT;
+      setIsMobile(mobile);
+      // Если перешли на десктоп, закрываем Bottom Sheet
+      if (!mobile && isSidebarOpen) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isSidebarOpen]);
 
   // Мемоизированные вычисления
   const hasEnoughIngredients = useMemo(
@@ -75,6 +97,11 @@ function App() {
       setIsLoading(true);
       setAppMode(mode);
 
+      // Если это режим холодильника, закрываем Bottom Sheet
+      if (mode === 'fridge' && isMobile) {
+        setIsSidebarOpen(false);
+      }
+
       setTimeout(() => {
         let recipe: Recipe | null = null;
 
@@ -88,7 +115,7 @@ function App() {
         setIsLoading(false);
       }, LOADING_DELAY_MS);
     },
-    [hasEnoughIngredients, getRecipeFromFridge]
+    [hasEnoughIngredients, getRecipeFromFridge, isMobile]
   );
 
   // Эффект: обновление подходящих рецептов при изменении ингредиентов
@@ -152,32 +179,52 @@ function App() {
     [isLoading, appMode, hasEnoughIngredients, hasMatchingRecipes, currentRecipe]
   );
 
+  // Открытие/закрытие сайдбара
+  const toggleSidebar = useCallback(() => {
+    setIsSidebarOpen((prev) => !prev);
+  }, []);
+
   return (
-    <Layout
-      sidebar={
-        <Sidebar
-          onIngredientsChange={handleIngredientsChange}
-          onGenerateFromFridge={handleRecipeFromFridge}
-          selectedCount={selectedIngredients.length}
+    <>
+      <Layout
+        sidebar={
+          <Sidebar
+            onIngredientsChange={handleIngredientsChange}
+            onGenerateFromFridge={handleRecipeFromFridge}
+            selectedCount={selectedIngredients.length}
+          />
+        }
+        isSidebarOpen={isSidebarOpen}
+        onSidebarToggle={isMobile ? toggleSidebar : undefined}
+      >
+        <RecipeCard
+          recipe={currentRecipe}
+          isLoading={isLoading}
+          noRecipesMessage={showNoRecipesMessage ? errorMessage : undefined}
         />
-      }
-    >
-      <RecipeCard
-        recipe={currentRecipe}
-        isLoading={isLoading}
-        noRecipesMessage={showNoRecipesMessage ? errorMessage : undefined}
-      />
 
-      <div className={styles.buttonContainer}>
-        <GenerateButton onClick={handleRandomRecipe} disabled={isLoading} />
+        <div className={styles.buttonContainer}>
+          <GenerateButton onClick={handleRandomRecipe} disabled={isLoading} />
 
-        {showFridgeHint && (
-          <div className={styles.hint} role="status" aria-live="polite">
-            Рецепт подобран по ингредиентам из холодильника
-          </div>
-        )}
-      </div>
-    </Layout>
+          {showFridgeHint && (
+            <div className={styles.hint} role="status" aria-live="polite">
+              Рецепт подобран по ингредиентам из холодильника
+            </div>
+          )}
+        </div>
+      </Layout>
+
+      {/* Bottom Sheet для мобильной версии */}
+      {isMobile && (
+        <BottomSheet isOpen={isSidebarOpen} onClose={toggleSidebar}>
+          <Sidebar
+            onIngredientsChange={handleIngredientsChange}
+            onGenerateFromFridge={handleRecipeFromFridge}
+            selectedCount={selectedIngredients.length}
+          />
+        </BottomSheet>
+      )}
+    </>
   );
 }
 
