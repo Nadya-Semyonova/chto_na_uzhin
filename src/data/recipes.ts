@@ -1,14 +1,3 @@
-export interface Recipe {
-  id: string;
-  title: string;
-  category: string;
-  imageUrl: string;
-  instructions: string;
-  ingredients: string[]; // массив id ингредиентов
-  cookingTime?: number; // в минутах
-  difficulty?: 'Легко' | 'Средне' | 'Сложно';
-}
-
 import cezarImage from '../shared/assets/images/saladcezar.jpg';
 import grecheskiiImage from '../shared/assets/images/grecheskii.jpg';
 import grechkasgribamiImage from '../shared/assets/images/grechka_s_gribami.jpg';
@@ -27,7 +16,27 @@ import rizottoImage from '../shared/assets/images/rizotto.jpg';
 import okroshkaImage from '../shared/assets/images/okroshka.jpg';
 import kartofelImage from '../shared/assets/images/kartofel.jpg';
 
-// База рецептов
+export interface Recipe {
+  id: string;
+  title: string;
+  category: string;
+  imageUrl: string;
+  instructions: string;
+  ingredients: string[]; // массив id ингредиентов
+  cookingTime?: number; // в минутах
+  difficulty?: 'Легко' | 'Средне' | 'Сложно';
+}
+
+export interface RecipeWithMatch extends Recipe {
+  matchPercentage: number;
+  matchCount: number;
+}
+
+// ===== НОВАЯ КОНСТАНТА =====
+// Минимальное количество ингредиентов, которое должно совпасть для показа рецепта
+const MIN_MATCHING_INGREDIENTS = 3;
+
+// База рецептов (без изменений)
 export const RECIPES: Recipe[] = [
   {
     id: '1',
@@ -218,13 +227,8 @@ export const RECIPES: Recipe[] = [
   },
 ];
 
-// интерфейс для рецепта с процентом совпадения
-export interface RecipeWithMatch extends Recipe {
-  matchPercentage: number;
-  matchCount: number;
-}
-
 // Функция для поиска всех подходящих рецептов
+
 export const findMatchingRecipes = (
   selectedIngredients: string[],
   recipes: Recipe[] = RECIPES
@@ -239,8 +243,9 @@ export const findMatchingRecipes = (
       selectedIngredients.includes(ingredient)
     ).length;
 
-    // Пропускаем рецепты без совпадений
-    if (matchCount === 0) return;
+    // Пропускаем рецепты, где совпало МЕНЬШЕ 3 ингредиентов
+
+    if (matchCount < MIN_MATCHING_INGREDIENTS) return;
 
     // Считаем процент совпадения
     const matchPercentage = (matchCount / recipe.ingredients.length) * 100;
@@ -262,7 +267,8 @@ export const getRandomRecipe = (recipes: Recipe[] = RECIPES): Recipe => {
   return recipes[randomIndex];
 };
 
-// Функция для поиска рецепта с максимальным совпадением (если нужно)
+// Функция для поиска рецепта с максимальным совпадением
+
 export const findBestMatchingRecipe = (
   selectedIngredients: string[],
   recipes: Recipe[] = RECIPES
@@ -277,7 +283,8 @@ export const findBestMatchingRecipe = (
       selectedIngredients.includes(ingredient)
     ).length;
 
-    if (matches > maxMatches) {
+    //  Учитываем только рецепты с минимум 3 совпадениями
+    if (matches >= MIN_MATCHING_INGREDIENTS && matches > maxMatches) {
       maxMatches = matches;
       bestRecipe = recipe;
     }
@@ -286,14 +293,14 @@ export const findBestMatchingRecipe = (
   return bestRecipe;
 };
 
-// Функция для поиска рецепта по ингредиентам (точное совпадение)
+// Функция для поиска рецепта по ингредиентам
 export const findRecipeByIngredients = (
   selectedIngredients: string[],
   recipes: Recipe[] = RECIPES
 ): Recipe | null => {
   if (selectedIngredients.length === 0) return null;
 
-  // Находим рецепты, которые можно приготовить из выбранных ингредиентов
+  // Находим рецепты, которые можно приготовить из выбранных ингредиентов (точное совпадение)
   const possibleRecipes = recipes.filter((recipe) => {
     // Проверяем, есть ли все необходимые ингредиенты в холодильнике
     return recipe.ingredients.every((ingredient) => selectedIngredients.includes(ingredient));
