@@ -1,7 +1,7 @@
 export interface Ingredient {
   id: string;
   name: string;
-  icon: string; // путь к иконке или компонент
+  icon: string;
   category: 'dairy' | 'meat' | 'vegetables' | 'grains' | 'other';
 }
 
@@ -32,6 +32,11 @@ export const POPULAR_INGREDIENTS: Ingredient[] = [
   { id: 'рис', name: 'Рис', category: 'grains', icon: '' },
   { id: 'макароны', name: 'Макароны', category: 'grains', icon: '' },
   { id: 'хлеб', name: 'Хлеб', category: 'other', icon: '' },
+
+  // Соусы
+  { id: 'сметана', name: 'Сметана', category: 'other', icon: '' },
+  { id: 'майонез', name: 'Майонез', category: 'other', icon: '' },
+  { id: 'кетчуп', name: 'Кетчуп', category: 'other', icon: '' },
 ];
 
 // Также можно экспортировать для удобства
