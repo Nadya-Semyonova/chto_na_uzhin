@@ -11,6 +11,9 @@ import fryedriceImage from '../shared/assets/images/riceSyaitcom.jpg';
 import zapekImage from '../shared/assets/images/zapekanka.jpg';
 import eggsImage from '../shared/assets/images/eggsbecon.jpg';
 import kartoshkabeconImage from '../shared/assets/images/kartoshkaBecon.jpg';
+import osnovnoeImage from '../shared/assets/images/osnovnoe.jpg';
+import saladImage from '../shared/assets/images/salad.jpg';
+import sanwichesImage from '../shared/assets/images/sadwiches.jpg';
 
 // ========== ПРОСТЫЕ РЕЦЕПТЫ ДЛЯ ХОЛОДИЛЬНИКА ==========
 export const FRIDGE_RECIPES: Recipe[] = [
@@ -172,7 +175,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '15',
     title: 'Тушеная капуста',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: osnovnoeImage,
     instructions:
       'Обжарьте лук и морковь, добавьте нашинкованную капусту. Тушите с добавлением воды 30 минут. Добавьте соль, перец, томатную пасту (можно заменить кетчупом). Подавайте со сметаной (по желанию).',
     ingredients: ['капуста', 'морковь', 'лук'],
@@ -183,7 +186,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '16',
     title: 'Салат из помидоров с перцем',
     category: 'Салаты',
-    imageUrl: '',
+    imageUrl: saladImage,
     instructions:
       'Нарежьте помидоры, перец и лук. Посолите, добавьте сметану или майонез (по желанию). Посыпьте зеленью.',
     ingredients: ['помидор', 'болгарский перец', 'лук'],
@@ -194,7 +197,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '17',
     title: 'Летний салат',
     category: 'Салаты',
-    imageUrl: '',
+    imageUrl: saladImage,
     instructions:
       'Нарежьте огурцы, помидоры и лук. Посолите, заправьте сметаной или майонезом (по желанию).',
     ingredients: ['огурец', 'помидор', 'лук'],
@@ -237,7 +240,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '21',
     title: 'Бутерброд с беконом и сыром',
     category: 'Закуска',
-    imageUrl: '',
+    imageUrl: sanwichesImage,
     instructions:
       'Обжарьте бекон. Положите на хлеб, сверху сыр. Можно подогреть в микроволновке или духовке, чтобы сыр расплавился. Добавьте кетчуп или майонез (по желанию).',
     ingredients: ['хлеб', 'бекон', 'сыр'],
@@ -446,7 +449,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '40',
     title: 'Сэндвич с беконом, яйцом и сыром',
     category: 'Закуска',
-    imageUrl: '',
+    imageUrl: sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. Положите на хлеб: сыр, бекон, яйцо. Накройте вторым куском хлеба. Обжарьте сэндвич на сковороде с двух сторон. Подавайте с кетчупом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб'],
@@ -468,7 +471,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '42',
     title: 'Тушеная капуста с картошкой',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: osnovnoeImage,
     instructions:
       'Обжарьте лук и морковь, добавьте капусту и картофель. Тушите с добавлением воды и кетчупа 40 минут. Добавьте соль, перец.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель'],
@@ -490,7 +493,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '44',
     title: 'Овощной салат с сыром',
     category: 'Салаты',
-    imageUrl: '',
+    imageUrl: saladImage,
     instructions:
       'Нарежьте помидоры, перец и лук. Добавьте кубики сыра. Заправьте сметаной или майонезом. Посолите, поперчите.',
     ingredients: ['помидор', 'болгарский перец', 'лук', 'сыр', 'сметана'],
@@ -578,7 +581,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '52',
     title: 'Овощное рагу с капустой',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: osnovnoeImage,
     instructions:
       'Обжарьте лук, морковь, капусту. Добавьте картофель, помидоры и воду. Тушите 30 минут. Добавьте соль, перец, кетчуп по вкусу. Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель', 'помидор'],
@@ -589,7 +592,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '53',
     title: 'Сэндвич с беконом, яйцом, сыром и помидором',
     category: 'Закуска',
-    imageUrl: '',
+    imageUrl: sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. Положите на хлеб: сыр, бекон, яйцо, помидор. Накройте вторым куском хлеба. Обжарьте на сковороде. Подавайте с кетчупом или майонезом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб', 'помидор'],
@@ -622,7 +625,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '56',
     title: 'Праздничный салат',
     category: 'Салаты',
-    imageUrl: '',
+    imageUrl: saladImage,
     instructions:
       'Нарежьте помидоры, огурцы, лук, яйца и сыр кубиками. Заправьте майонезом или сметаной. Посолите.',
     ingredients: ['помидор', 'огурец', 'лук', 'сыр', 'яйца'],
@@ -633,7 +636,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '57',
     title: 'Домашнее жаркое с курицей и сырной корочкой',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: osnovnoeImage,
     instructions:
       'Обжарьте курицу, лук, морковь. Добавьте картофель, сметану и воду. Тушите 30 минут. Переложите в форму, посыпьте сыром. Запекайте 15 минут при 200°C.',
     ingredients: ['курица', 'картофель', 'лук', 'морковь', 'сыр'],
@@ -655,7 +658,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '59',
     title: 'Классическое овощное рагу',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: osnovnoeImage,
     instructions:
       'Обжарьте лук, морковь, капусту. Добавьте картофель, помидоры, чеснок и воду. Тушите 40 минут. Добавьте соль, перец, лавровый лист. Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель', 'помидор'],
@@ -688,7 +691,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '62',
     title: 'Большой сэндвич с беконом и овощами',
     category: 'Закуска',
-    imageUrl: '',
+    imageUrl: sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. На хлеб выложите сыр, бекон, яйцо, помидор и огурец. Накройте вторым куском хлеба. Обжарьте с двух сторон. Подавайте с кетчупом или майонезом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб', 'помидор', 'огурец'],
@@ -732,7 +735,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '66',
     title: 'Овощное рагу с капустой и перцем',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: osnovnoeImage,
     instructions:
       'Обжарьте лук, морковь, перец, чеснок. Добавьте капусту, картофель, помидоры. Залейте водой, тушите 40 минут. Посолите, поперчите, добавьте лавровый лист. Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель', 'помидор', 'болгарский перец'],
@@ -765,7 +768,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '69',
     title: 'Клубный сэндвич с беконом и овощами',
     category: 'Закуска',
-    imageUrl: '',
+    imageUrl: sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. На хлеб выложите сыр, бекон, яйцо, лук, помидор и огурец. Накройте вторым куском хлеба. Обжарьте с двух сторон. Подавайте с кетчупом или майонезом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб', 'помидор', 'огурец', 'лук'],
