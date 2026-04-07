@@ -1,19 +1,5 @@
-import type { Recipe } from './recipes';
-
-
-import kuricaImage from '../shared/assets/images/kuricaKartoshka.jpg';
-import chickensoupImage from '../shared/assets/images/chickenSoup.jpg';
-import zapekankaImage from '../shared/assets/images/zapeckankaKartoshka.jpg';
-import kotletyImage from '../shared/assets/images/kotletki.jpg';
-import makaroshkiImage from '../shared/assets/images/makaronyFarsh.jpg';
-import maccheesekiImage from '../shared/assets/images/macCheese.jpg';
-import fryedriceImage from '../shared/assets/images/riceSyaitcom.jpg';
-import zapekImage from '../shared/assets/images/zapekanka.jpg';
-import eggsImage from '../shared/assets/images/eggsbecon.jpg';
-import kartoshkabeconImage from '../shared/assets/images/kartoshkaBecon.jpg';
-import osnovnoeImage from '../shared/assets/images/osnovnoe.jpg';
-import saladImage from '../shared/assets/images/salad.jpg';
-import sanwichesImage from '../shared/assets/images/sadwiches.jpg';
+import {images} from './images';
+import type { Recipe } from './utilits';
 
 // ========== ПРОСТЫЕ РЕЦЕПТЫ ДЛЯ ХОЛОДИЛЬНИКА ==========
 export const FRIDGE_RECIPES: Recipe[] = [
@@ -21,7 +7,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '1',
     title: 'Курица с картофелем и луком в духовке',
     category: 'Основные блюда',
-    imageUrl: kuricaImage,
+    imageUrl: images.kuricaImage,
     instructions:
       'Картофель предварительно можно немного отварить, нарежьте картофель, лук и курицу. Посолите, поперчите, добавьте любимые специи. Запекайте в духовке 45 минут при 200°C. Подавайте со сметаной (по желанию).',
     ingredients: ['курица', 'картофель', 'лук'],
@@ -32,7 +18,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '2',
     title: 'Жаркое с курицей',
     category: 'Основные блюда',
-    imageUrl: kuricaImage,
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте лук, добавьте курицу. Когда курица подрумянится, добавьте предварительно отваренный картофель и немного воды. Тушите 30 минут. Добавьте специи, в конце можно добавить сметану (по желанию).',
     ingredients: ['курица', 'картофель', 'лук'],
@@ -43,7 +29,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '3',
     title: 'Куриный суп с рисом',
     category: 'Супы',
-    imageUrl: chickensoupImage,
+    imageUrl: images.chickensoupImage,
     instructions:
       'Поставьте вариться курицу с луком 20 минут. Добавьте рис, соль, перец, лавровый лист. Варите до готовности риса. При подаче можно добавить сметану.',
     ingredients: ['курица', 'рис', 'лук'],
@@ -54,7 +40,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '4',
     title: 'Куриная запеканка с яйцом и сыром',
     category: 'Запеканка',
-    imageUrl: zapekankaImage,
+    imageUrl: images.zapekankaImage,
     instructions:
       'Отварную курицу нарежьте. Взбейте яйца с солью и специями. Залейте курицу, посыпьте сыром. Запекайте 20 минут при 180°C. Можно подавать с майонезом или кетчупом.',
     ingredients: ['курица', 'яйца', 'сыр'],
@@ -65,7 +51,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '5',
     title: 'Котлеты домашние',
     category: 'Основные блюда',
-    imageUrl: kotletyImage,
+    imageUrl: images.kotletyImage,
     instructions:
       'Смешайте фарш, мелко нарезанный лук, яйцо, соль и перец. Сформируйте котлеты, обжарьте на сковороде. Подавайте с кетчупом или майонезом (по желанию).',
     ingredients: ['фарш', 'лук', 'яйца'],
@@ -76,7 +62,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '6',
     title: 'Макароны по-флотски',
     category: 'Основные блюда',
-    imageUrl: makaroshkiImage,
+    imageUrl: images.makaroshkiImage,
     instructions:
       'Отварите макароны. Обжарьте фарш, можно с луком. Смешайте с макаронами, посыпьте сыром. Подавайте с кетчупом (по желанию).',
     ingredients: ['фарш', 'макароны', 'сыр'],
@@ -87,7 +73,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '7',
     title: 'Картофельная запеканка с фаршем',
     category: 'Основные блюда',
-    imageUrl: zapekankaImage,
+    imageUrl: images.zapekankaImage,
     instructions:
       'Отварите картофель, сделайте пюре. Обжарьте фарш с луком. Выложите слоями: пюре - фарш - пюре. Посыпьте сыром (если есть), запекайте 20 минут. Подавайте со сметаной или кетчупом (по желанию).',
     ingredients: ['фарш', 'картофель', 'лук'],
@@ -98,7 +84,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '8',
     title: 'Картошка с грибами и луком',
     category: 'Основные блюда',
-    imageUrl: kuricaImage,
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте лук и грибы, добавьте нарезанный картофель. Жарьте до готовности картофеля. Добавьте соль, перец, зелень. Подавайте со сметаной (по желанию).',
     ingredients: ['картофель', 'грибы', 'лук'],
@@ -109,7 +95,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '9',
     title: 'Картофельная бабка с сыром',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapekankaImage,
     instructions:
       'Натрите сырой картофель, смешайте с яйцами, солью и специями. Выложите в форму, посыпьте сыром. Запекайте 40 минут при 180°C. Подавайте со сметаной (по желанию).',
     ingredients: ['картофель', 'сыр', 'яйца'],
@@ -120,7 +106,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '10',
     title: 'Макароны с яйцом и сыром',
     category: 'Основные блюда',
-    imageUrl: maccheesekiImage,
+    imageUrl: images.maccheesekiImage,
     instructions:
       'Отварите макароны. Взбейте яйца с солью, залейте макароны, обжарьте на сковороде. Посыпьте сыром в конце. Подавайте с кетчупом или майонезом (по желанию).',
     ingredients: ['макароны', 'яйца', 'сыр'],
@@ -131,7 +117,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '11',
     title: 'Жареный рис с яйцом',
     category: 'Основные блюда',
-    imageUrl: fryedriceImage,
+    imageUrl: images.fryedriceImage,
     instructions:
       'Обжарьте лук, добавьте вареный рис. Вбейте яйца, быстро перемешайте. Добавьте соевый соус (или просто соль, перец). Подавайте с кетчупом (по желанию).',
     ingredients: ['рис', 'яйца', 'лук'],
@@ -142,7 +128,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '12',
     title: 'Творожная запеканка',
     category: 'Основные блюда',
-    imageUrl: zapekImage,
+    imageUrl: images.zapekImage,
     instructions:
       'Смешайте творог, яйца, немного соли. Выложите в форму, посыпьте сыром. Запекайте 30 минут при 180°C. Подавайте со сметаной (по желанию).',
     ingredients: ['творог', 'яйца', 'сыр'],
@@ -153,7 +139,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '13',
     title: 'Яичница с беконом и сыром',
     category: 'Закуска',
-    imageUrl: eggsImage,
+    imageUrl: images.eggsImage,
     instructions:
       'Обжарьте бекон, вбейте яйца. Посыпьте сыром и накройте крышкой. Готовьте до желаемой консистенции яиц. Подавайте с кетчупом (по желанию).',
     ingredients: ['бекон', 'яйца', 'сыр'],
@@ -164,7 +150,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '14',
     title: 'Жареный картофель с беконом',
     category: 'Основные блюда',
-    imageUrl: kartoshkabeconImage,
+    imageUrl: images.kartoshkabeconImage,
     instructions:
       'Обжарьте бекон, добавьте лук и картофель. Жарьте до готовности картофеля. Добавьте соль, перец, паприку. Подавайте с кетчупом (по желанию).',
     ingredients: ['бекон', 'картофель', 'лук'],
@@ -175,7 +161,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '15',
     title: 'Тушеная капуста',
     category: 'Основные блюда',
-    imageUrl: osnovnoeImage,
+    imageUrl: images.osnovnoeImage,
     instructions:
       'Обжарьте лук и морковь, добавьте нашинкованную капусту. Тушите с добавлением воды 30 минут. Добавьте соль, перец, томатную пасту (можно заменить кетчупом). Подавайте со сметаной (по желанию).',
     ingredients: ['капуста', 'морковь', 'лук'],
@@ -186,7 +172,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '16',
     title: 'Салат из помидоров с перцем',
     category: 'Салаты',
-    imageUrl: saladImage,
+    imageUrl: images.saladImage,
     instructions:
       'Нарежьте помидоры, перец и лук. Посолите, добавьте сметану или майонез (по желанию). Посыпьте зеленью.',
     ingredients: ['помидор', 'болгарский перец', 'лук'],
@@ -197,7 +183,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '17',
     title: 'Летний салат',
     category: 'Салаты',
-    imageUrl: saladImage,
+    imageUrl: images.saladImage,
     instructions:
       'Нарежьте огурцы, помидоры и лук. Посолите, заправьте сметаной или майонезом (по желанию).',
     ingredients: ['огурец', 'помидор', 'лук'],
@@ -208,7 +194,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '18',
     title: 'Рис с курицей и морковью',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.fryedriceImage,
     instructions:
       'Обжарьте курицу, добавьте тертую морковь. Залейте водой, добавьте рис и соль. Тушите до готовности риса. Подавайте с кетчупом (по желанию).',
     ingredients: ['курица', 'рис', 'морковь'],
@@ -219,7 +205,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '19',
     title: 'Картофельный салат с яйцом',
     category: 'Салаты',
-    imageUrl: '',
+    imageUrl: images.kartofelsaladImage,
     instructions: 'Отварите картофель и яйца. Нарежьте, добавьте майонез, соль, перец, зелень.',
     ingredients: ['картофель', 'яйца', 'майонез'],
     cookingTime: 25,
@@ -229,7 +215,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '20',
     title: 'Гренки с яйцом и сыром',
     category: 'Закуска',
-    imageUrl: '',
+    imageUrl: images.grenkaImage,
     instructions:
       'Хлеб обмакните во взбитое яйцо, обжарьте с двух сторон. Посыпьте сыром. Подавайте с кетчупом или майонезом (по желанию).',
     ingredients: ['хлеб', 'яйца', 'сыр'],
@@ -240,7 +226,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '21',
     title: 'Бутерброд с беконом и сыром',
     category: 'Закуска',
-    imageUrl: sanwichesImage,
+    imageUrl: images.sanwichesImage,
     instructions:
       'Обжарьте бекон. Положите на хлеб, сверху сыр. Можно подогреть в микроволновке или духовке, чтобы сыр расплавился. Добавьте кетчуп или майонез (по желанию).',
     ingredients: ['хлеб', 'бекон', 'сыр'],
@@ -251,7 +237,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '22',
     title: 'Картошка с грибами и сметаной',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте грибы и картофель. Добавьте сметану, соль, перец, тушите 10 минут. При подаче посыпьте зеленью.',
     ingredients: ['картофель', 'грибы', 'сметана'],
@@ -262,7 +248,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '23',
     title: 'Курица с картофелем и овощами в духовке',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Нарежьте курицу, картофель (лучше предварительно отварить), лук и морковь. Посолите, поперчите, добавьте специи (паприку, тимьян или базилик). Залейте сметаной или майонезом. Запекайте 50 минут при 200°C.',
     ingredients: ['курица', 'картофель', 'лук', 'морковь'],
@@ -273,7 +259,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '24',
     title: 'Домашнее рагу с курицей',
     category: 'Основные блюда',
-    imageUrl: kuricaImage,
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте лук и морковь, добавьте курицу. Когда курица подрумянится, добавьте картофель и воду. Тушите 40 минут. Добавьте соль, перец, лавровый лист. Подавайте со сметаной.',
     ingredients: ['курица', 'картофель', 'лук', 'морковь'],
@@ -284,7 +270,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '25',
     title: 'Плов с курицей по-домашнему',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.plovImage,
     instructions:
       'Обжарьте лук и морковь, добавьте курицу. Залейте водой, добавьте рис, соль, специи по вкусу (зира, барбарис, куркуму). Тушите до готовности риса. Подавайте с кетчупом.',
     ingredients: ['курица', 'рис', 'лук', 'морковь'],
@@ -295,7 +281,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '26',
     title: 'Куриный суп с рисом и морковью',
     category: 'Супы',
-    imageUrl: chickensoupImage,
+    imageUrl: images.chickensoupImage,
     instructions:
       'Варите курицу в воде с луком и морковью 20 минут. Добавьте рис, соль, перец, лавровый лист. Варите до готовности риса. При подаче добавьте сметану.',
     ingredients: ['курица', 'рис', 'лук', 'морковь'],
@@ -306,7 +292,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '27',
     title: 'Куриные котлеты с сыром',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kurinnyekotlImage,
     instructions:
       'Куриное филе пропустите через мясорубку или мелко порубите. Добавьте яйцо, тертый сыр, соль, перец. Сформируйте котлеты, обваляйте в хлебных крошках (хлеб). Обжарьте до золотистой корочки. Подавайте с кетчупом или майонезом.',
     ingredients: ['курица', 'сыр', 'яйца', 'хлеб'],
@@ -317,7 +303,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '28',
     title: 'Домашние котлеты',
     category: 'Основные блюда',
-    imageUrl: kotletyImage,
+    imageUrl: images.kotletyImage,
     instructions:
       'Хлеб замочите в воде или молоке. Смешайте фарш, мелко нарезанный лук, яйцо, отжатый хлеб, соль и перец. Сформируйте котлеты, обжарьте на сковороде. Подавайте с кетчупом или майонезом.',
     ingredients: ['фарш', 'лук', 'яйца', 'хлеб'],
@@ -328,7 +314,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '29',
     title: 'Тефтели в сметанном соусе',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.tefteliImage,
     instructions:
       'Смешайте фарш, лук, яйцо, белый хлеб. Скатайте шарики. Обжарьте, залейте сметаной (или сметаной с кетчупом), тушите 20 минут.',
     ingredients: ['фарш', 'лук', 'яйца', 'хлеб'],
@@ -339,7 +325,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '30',
     title: 'Макароны по-флотски с сыром',
     category: 'Основные блюда',
-    imageUrl: makaroshkiImage,
+    imageUrl: images.makaroshkiImage,
     instructions:
       'Отварите макароны. Обжарьте фарш с луком. Смешайте с макаронами, посыпьте сыром. Запекайте 10 минут до расплавления сыра. Подавайте с кетчупом.',
     ingredients: ['фарш', 'макароны', 'сыр', 'лук'],
@@ -350,7 +336,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '31',
     title: 'Картофельная запеканка с фаршем и яйцом',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapeksfarshemImage,
     instructions:
       'Отварите картофель, сделайте пюре. Обжарьте фарш с луком. Выложите слоями: пюре - фарш - пюре. Сверху залейте взбитым яйцом. Запекайте 25 минут при 180°C. Подавайте со сметаной или кетчупом.',
     ingredients: ['фарш', 'картофель', 'лук', 'яйца'],
@@ -361,7 +347,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '32',
     title: 'Картофельные зразы с фаршем',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zrazyImage,
     instructions:
       'Сделайте картофельное пюре, добавьте сырое яйцо. Обжарьте фарш с луком. Из пюре сформируйте лепешки, положите фарш, защипните. Обжарьте до золотистой корочки. Подавайте со сметаной.',
     ingredients: ['фарш', 'картофель', 'лук', 'яйца'],
@@ -372,7 +358,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '33',
     title: 'Картофель с грибами в сливочном соусе',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте лук и грибы, добавьте нарезанный картофель. Залейте сливками, добавьте соль, перец, чеснок. Тушите до готовности картофеля (20-25 минут). Подавайте с хлебом.',
     ingredients: ['картофель', 'грибы', 'лук', 'сливки'],
@@ -383,7 +369,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '34',
     title: 'Картофельная бабка с сыром и луком',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapekankaImage,
     instructions:
       'Натрите сырой картофель, добавьте яйца, мелко нарезанный лук, соль и специи. Выложите в форму, посыпьте сыром. Запекайте 45 минут при 180°C. Подавайте со сметаной.',
     ingredients: ['картофель', 'сыр', 'яйца', 'лук'],
@@ -394,7 +380,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '35',
     title: 'Картофельные драники с сыром',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kotletyImage,
     instructions:
       'Натрите картофель и лук. Добавьте яйца, соль, перец. Жарьте на сковороде. В конце посыпьте тертым сыром и накройте крышкой, чтобы расплавился. Подавайте со сметаной.',
     ingredients: ['картофель', 'сыр', 'яйца', 'лук'],
@@ -405,7 +391,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '36',
     title: 'Карбонара по-домашнему',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.karbonaraImage,
     instructions:
       'Обжарьте бекон. Отварите макароны. Взбейте яйца с сыром. Смешайте горячие макароны с беконом, залейте яично-сырной смесью, быстро перемешайте (яйца приготовятся от тепла). Добавьте перец, соль по вкусу.',
     ingredients: ['макароны', 'сыр', 'яйца', 'бекон'],
@@ -416,7 +402,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '37',
     title: 'Рис с курицей и грибами',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.fryedriceImage,
     instructions:
       'Обжарьте лук, курицу и грибы. Добавьте рис и воду. Варите до готовности риса. Добавьте соль, перец, специи. Подавайте со сметаной.',
     ingredients: ['рис', 'курица', 'грибы', 'лук'],
@@ -427,7 +413,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '38',
     title: 'Жареный рис с яйцом и овощами',
     category: 'Основные блюда',
-    imageUrl: fryedriceImage,
+    imageUrl: images.fryedriceImage,
     instructions:
       'Обжарьте лук и морковь, добавьте вареный рис. Вбейте яйца, быстро перемешайте. Добавьте соевый соус (или просто соль, перец, чеснок). Подавайте с кетчупом.',
     ingredients: ['рис', 'яйца', 'лук', 'морковь'],
@@ -438,7 +424,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '39',
     title: 'Творожная запеканка со сметаной',
     category: 'Основные блюда',
-    imageUrl: zapekImage,
+    imageUrl: images.zapekImage,
     instructions:
       'Смешайте творог, яйца, сметану. Выложите в форму, посыпьте крошкой из хлеба. Запекайте 35 минут при 180°C. Подавайте со сметаной.',
     ingredients: ['творог', 'яйца', 'хлеб'],
@@ -449,7 +435,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '40',
     title: 'Сэндвич с беконом, яйцом и сыром',
     category: 'Закуска',
-    imageUrl: sanwichesImage,
+    imageUrl: images.sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. Положите на хлеб: сыр, бекон, яйцо. Накройте вторым куском хлеба. Обжарьте сэндвич на сковороде с двух сторон. Подавайте с кетчупом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб'],
@@ -460,7 +446,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '41',
     title: 'Щи или борщ без свеклы (капустный суп)',
     category: 'Супы',
-    imageUrl: '',
+    imageUrl: images.chickensoupImage,
     instructions:
       'Обжарьте лук и морковь. Добавьте нашинкованную капусту и нарезанный картофель. Залейте водой, варите 30 минут. Добавьте соль, перец, томатную пасту (или кетчуп). Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель'],
@@ -471,7 +457,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '42',
     title: 'Тушеная капуста с картошкой',
     category: 'Основные блюда',
-    imageUrl: osnovnoeImage,
+    imageUrl: images.osnovnoeImage,
     instructions:
       'Обжарьте лук и морковь, добавьте капусту и картофель. Тушите с добавлением воды и кетчупа 40 минут. Добавьте соль, перец.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель'],
@@ -482,7 +468,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '43',
     title: 'Греческий салат (упрощенный)',
     category: 'Салаты',
-    imageUrl: '',
+    imageUrl: images.grecheskiiImage,
     instructions:
       'Нарежьте помидоры, перец, огурец и лук. Посолите, добавьте оливковое масло (или сметану). При желании добавьте сыр (фету или брынзу).',
     ingredients: ['помидор', 'болгарский перец', 'лук', 'огурец'],
@@ -493,7 +479,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '44',
     title: 'Овощной салат с сыром',
     category: 'Салаты',
-    imageUrl: saladImage,
+    imageUrl: images.saladImage,
     instructions:
       'Нарежьте помидоры, перец и лук. Добавьте кубики сыра. Заправьте сметаной или майонезом. Посолите, поперчите.',
     ingredients: ['помидор', 'болгарский перец', 'лук', 'сыр', 'сметана'],
@@ -504,7 +490,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '45',
     title: 'Куриный рулет с картофелем и сыром',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaruletImage,
     instructions:
       'Отбейте куриное филе. Сделайте начинку: вареный картофель, яйцо и сыр натрите, смешайте с майонезом. Заверните рулетом, запекайте 40 минут при 180°C. Подавайте с кетчупом.',
     ingredients: ['курица', 'картофель', 'сыр', 'яйца'],
@@ -515,7 +501,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '46',
     title: 'Тефтели с рисом',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.tefteliImage,
     instructions:
       'Смешайте фарш, вареный рис, мелко нарезанный лук, яйцо. Сформируйте шарики. Обжарьте, залейте томатным соусом (кетчуп + сметана), тушите 20 минут.',
     ingredients: ['фарш', 'рис', 'лук', 'яйца'],
@@ -526,7 +512,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '47',
     title: 'Запеканка "Сырная шапка" с фаршем',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapeksfarshemImage,
     instructions:
       'Выложите фарш в форму. Сверху - слой тертого сырого картофеля, смешанного с яйцом и солью. Посыпьте сыром. Запекайте 45 минут при 180°C. Подавайте со сметаной.',
     ingredients: ['фарш', 'картофель', 'сыр', 'яйца'],
@@ -537,7 +523,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '48',
     title: 'Курица по-домашнему в сметанном соусе',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте курицу, лук и морковь. Добавьте картофель, залейте сметаной и водой. Тушите 40 минут. В конце посыпьте сыром (если есть).',
     ingredients: ['курица', 'картофель', 'лук', 'морковь', 'сметана'],
@@ -548,7 +534,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '49',
     title: 'Плов с курицей и перцем',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.plovImage,
     instructions:
       'Обжарьте лук, морковь, перец и курицу. Добавьте рис, воду, специи. Тушите до готовности риса. Подавайте с чесноком и зеленью, а также с кетчупом.',
     ingredients: ['курица', 'рис', 'лук', 'морковь', 'болгарский перец'],
@@ -559,7 +545,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '50',
     title: 'Запеканка из макарон с фаршем',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapeksfarshemImage,
     instructions:
       'Отварите макароны. Смешайте фарш с луком, яйцом и размоченным хлебом. Выложите слоями макароны и фарш. Запекайте 30 минут при 180°C. Подавайте с кетчупом.',
     ingredients: ['фарш', 'лук', 'яйца', 'хлеб', 'макароны'],
@@ -570,7 +556,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '51',
     title: 'Картофель с грибами в сливочно-сырном соусе',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте лук, грибы и картофель. Залейте сливками, добавьте сыр. Тушите 20 минут. Посолите, поперчите.',
     ingredients: ['картофель', 'грибы', 'лук', 'сливки', 'сыр'],
@@ -581,7 +567,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '52',
     title: 'Овощное рагу с капустой',
     category: 'Основные блюда',
-    imageUrl: osnovnoeImage,
+    imageUrl: images.osnovnoeImage,
     instructions:
       'Обжарьте лук, морковь, капусту. Добавьте картофель, помидоры и воду. Тушите 30 минут. Добавьте соль, перец, кетчуп по вкусу. Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель', 'помидор'],
@@ -592,7 +578,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '53',
     title: 'Сэндвич с беконом, яйцом, сыром и помидором',
     category: 'Закуска',
-    imageUrl: sanwichesImage,
+    imageUrl: images.sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. Положите на хлеб: сыр, бекон, яйцо, помидор. Накройте вторым куском хлеба. Обжарьте на сковороде. Подавайте с кетчупом или майонезом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб', 'помидор'],
@@ -603,7 +589,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '54',
     title: 'Паста с курицей и грибами в сливочном соусе',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.karbonaraImage,
     instructions:
       'Обжарьте лук, курицу и грибы. Залейте сливками, тушите 10 минут. Подавайте с отварными макаронами, посыпьте сыром (если есть).',
     ingredients: ['курица', 'грибы', 'сливки', 'лук', 'макароны'],
@@ -614,7 +600,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '55',
     title: 'Голубцы без капусты (ленивые)',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Смешайте фарш, рис, лук, яйцо. Сформируйте котлеты. Обжарьте, залейте томатным соусом из помидоров (с кетчупом). Тушите 25 минут. Подавайте со сметаной.',
     ingredients: ['фарш', 'рис', 'лук', 'яйца', 'помидор'],
@@ -625,7 +611,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '56',
     title: 'Праздничный салат',
     category: 'Салаты',
-    imageUrl: saladImage,
+    imageUrl: images.saladImage,
     instructions:
       'Нарежьте помидоры, огурцы, лук, яйца и сыр кубиками. Заправьте майонезом или сметаной. Посолите.',
     ingredients: ['помидор', 'огурец', 'лук', 'сыр', 'яйца'],
@@ -636,7 +622,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '57',
     title: 'Домашнее жаркое с курицей и сырной корочкой',
     category: 'Основные блюда',
-    imageUrl: osnovnoeImage,
+    imageUrl: images.osnovnoeImage,
     instructions:
       'Обжарьте курицу, лук, морковь. Добавьте картофель, сметану и воду. Тушите 30 минут. Переложите в форму, посыпьте сыром. Запекайте 15 минут при 200°C.',
     ingredients: ['курица', 'картофель', 'лук', 'морковь', 'сыр'],
@@ -647,7 +633,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '58',
     title: 'Макаронная запеканка с фаршем и сыром',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapeksfarshemImage,
     instructions:
       'Отварите макароны. Смешайте фарш с луком, яйцом и размоченным хлебом. Выложите слоями, посыпьте сыром. Запекайте 30 минут при 180°C. Подавайте с кетчупом.',
     ingredients: ['фарш', 'лук', 'яйца', 'хлеб', 'макароны', 'сыр'],
@@ -658,7 +644,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '59',
     title: 'Классическое овощное рагу',
     category: 'Основные блюда',
-    imageUrl: osnovnoeImage,
+    imageUrl: images.osnovnoeImage,
     instructions:
       'Обжарьте лук, морковь, капусту. Добавьте картофель, помидоры, чеснок и воду. Тушите 40 минут. Добавьте соль, перец, лавровый лист. Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель', 'помидор'],
@@ -669,7 +655,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '60',
     title: 'Плов с курицей и овощами',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.plovImage,
     instructions:
       'Обжарьте лук, морковь, перец, чеснок и курицу. Добавьте рис, воду, специи. Тушите до готовности риса. Подавайте с зеленью и кетчупом.',
     ingredients: ['курица', 'рис', 'лук', 'морковь', 'болгарский перец'],
@@ -680,7 +666,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '61',
     title: 'Картофельная запеканка с грибами и сыром',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapekankaImage,
     instructions:
       'Обжарьте лук и грибы. Смешайте с нарезанным вареным картофелем. Залейте сливками, яйцами, посыпьте сыром. Запекайте 30 минут при 180°C. Подавайте со сметаной.',
     ingredients: ['картофель', 'грибы', 'лук', 'сливки', 'сыр', 'яйца'],
@@ -691,7 +677,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '62',
     title: 'Большой сэндвич с беконом и овощами',
     category: 'Закуска',
-    imageUrl: sanwichesImage,
+    imageUrl: images.sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. На хлеб выложите сыр, бекон, яйцо, помидор и огурец. Накройте вторым куском хлеба. Обжарьте с двух сторон. Подавайте с кетчупом или майонезом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб', 'помидор', 'огурец'],
@@ -702,7 +688,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '63',
     title: 'Ленивые голубцы с овощами',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.tefteliImage,
     instructions:
       'Смешайте фарш, рис, лук. Сформируйте шарики. В сотейнике обжарьте морковь, перец, помидоры. Добавьте тефтели и воду. Тушите 30 минут. Подавайте со сметаной.',
     ingredients: ['фарш', 'рис', 'лук', 'морковь', 'помидор', 'болгарский перец'],
@@ -713,7 +699,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '64',
     title: 'Курица по-французски с картофелем',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Обжарьте курицу с луком, морковью и чесноком. Добавьте картофель, сметану и воду. Тушите 30 минут. Переложите в форму, посыпьте сыром. Запекайте 15 минут до золотистой корочки.',
     ingredients: ['курица', 'картофель', 'лук', 'морковь', 'сыр'],
@@ -724,7 +710,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '65',
     title: 'Макаронная запеканка с фаршем и томатом',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.zapeksfarshemImage,
     instructions:
       'Отварите макароны. Смешайте фарш с луком, яйцом и хлебом. Выложите слоями макароны, фарш, помидоры. Посыпьте сыром. Запекайте 30 минут при 180°C. Подавайте с кетчупом.',
     ingredients: ['фарш', 'лук', 'яйца', 'хлеб', 'макароны', 'сыр', 'помидор'],
@@ -735,7 +721,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '66',
     title: 'Овощное рагу с капустой и перцем',
     category: 'Основные блюда',
-    imageUrl: osnovnoeImage,
+    imageUrl: images.osnovnoeImage,
     instructions:
       'Обжарьте лук, морковь, перец, чеснок. Добавьте капусту, картофель, помидоры. Залейте водой, тушите 40 минут. Посолите, поперчите, добавьте лавровый лист. Подавайте со сметаной.',
     ingredients: ['капуста', 'морковь', 'лук', 'картофель', 'помидор', 'болгарский перец'],
@@ -746,7 +732,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '67',
     title: 'Паста с курицей, грибами и сливочно-сырным соусом',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.karbonaraImage,
     instructions:
       'Обжарьте лук, чеснок, курицу и грибы. Залейте сливками, добавьте сыр. Тушите до расплавления сыра. Подавайте с отварными макаронами.',
     ingredients: ['курица', 'грибы', 'лук', 'сливки', 'сыр', 'макароны'],
@@ -757,7 +743,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '68',
     title: 'Картофельный гратен с грибами',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.kuricaImage,
     instructions:
       'Нарежьте картофель тонкими кружками. Обжарьте грибы с луком и чесноком. Смешайте сливки с яйцами. Выложите слоями картофель и грибы, залейте смесью, посыпьте сыром. Запекайте 45 минут при 180°C. Подавайте со сметаной.',
     ingredients: ['картофель', 'грибы', 'лук', 'сливки', 'сыр', 'яйца'],
@@ -768,7 +754,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '69',
     title: 'Клубный сэндвич с беконом и овощами',
     category: 'Закуска',
-    imageUrl: sanwichesImage,
+    imageUrl: images.sanwichesImage,
     instructions:
       'Обжарьте бекон и яйцо. На хлеб выложите сыр, бекон, яйцо, лук, помидор и огурец. Накройте вторым куском хлеба. Обжарьте с двух сторон. Подавайте с кетчупом или майонезом.',
     ingredients: ['бекон', 'яйца', 'сыр', 'хлеб', 'помидор', 'огурец', 'лук'],
@@ -779,7 +765,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '70',
     title: 'Голубцы ленивые с овощным соусом',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.tefteliImage,
     instructions:
       'Смешайте фарш, рис, лук, чеснок. Сформируйте тефтели. Обжарьте морковь, перец, помидоры. Добавьте тефтели и воду. Тушите 30 минут. Подавайте со сметаной.',
     ingredients: ['фарш', 'рис', 'лук', 'морковь', 'помидор', 'болгарский перец'],
@@ -790,7 +776,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '71',
     title: 'Плов с курицей',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.plovImage,
     instructions:
       'Обжарьте курицу до корочки. Добавьте лук и морковь, обжаривайте. Всыпьте рис, залейте кипятком, добавьте чеснок, соль, перец и специи для плова. Томите под крышкой. Подавайте с кетчупом.',
     ingredients: ['рис', 'курица', 'морковь', 'лук'],
@@ -801,7 +787,7 @@ export const FRIDGE_RECIPES: Recipe[] = [
     id: '72',
     title: 'Фаршированные перцы',
     category: 'Основные блюда',
-    imageUrl: '',
+    imageUrl: images.percyImage,
     instructions:
       'Обжарьте лук и морковь, отварите рис. Смешайте фарш с рисом, луком и морковью. Начините болгарские перцы. Полейте томатным соусом (кетчуп + сметана) и тушите 40-50 минут. Подавайте со сметаной.',
     ingredients: ['болгарский перец', 'фарш', 'рис', 'лук', 'морковь'],

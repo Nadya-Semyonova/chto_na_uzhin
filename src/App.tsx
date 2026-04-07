@@ -10,7 +10,7 @@ import {
   getRandomRecipe,
   type Recipe,
   type RecipeWithMatch,
-} from './data/recipes';
+} from './data/utilits';
 import styles from './App.module.css';
 
 // Константы

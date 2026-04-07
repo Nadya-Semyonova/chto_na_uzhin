@@ -1,4 +1,4 @@
-import type { Recipe } from '../../data/recipes';
+import type { Recipe } from '../../data/utilits';
 import styles from './RecipeCard.module.css';
 
 interface RecipeCardProps {
