@@ -1,5 +1,5 @@
 import type { Recipe } from './utilits';
-import {images} from './images';
+import { images } from './images';
 
 // ========== РЕЦЕПТЫ ДЛЯ РАНДОМНОЙ КНОПКИ ==========
 export const FEATURED_RECIPES: Recipe[] = [

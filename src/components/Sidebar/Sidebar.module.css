@@ -184,3 +184,16 @@
 .ingredientList::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
 }
+
+@media (max-width: 1400px) {
+  .fridgeActions {
+    flex-wrap: wrap;
+  }
+
+  .clearButton,
+  .cookButton {
+    flex: 1;
+    min-width: 120px;
+    white-space: nowrap;
+  }
+}

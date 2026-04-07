@@ -1,4 +1,4 @@
-import {images} from './images';
+import { images } from './images';
 import type { Recipe } from './utilits';
 
 // ========== ПРОСТЫЕ РЕЦЕПТЫ ДЛЯ ХОЛОДИЛЬНИКА ==========
