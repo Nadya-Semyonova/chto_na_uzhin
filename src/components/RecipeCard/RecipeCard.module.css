@@ -219,6 +219,7 @@
   padding: 60px var(--spacing-2xl);
   text-align: center;
   color: var(--text-muted);
+  flex: 1;
 }
 
 .placeholderIcon {
