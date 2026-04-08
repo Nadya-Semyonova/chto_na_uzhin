@@ -238,3 +238,111 @@
   font-size: 16px;
   max-width: 300px;
 }
+
+@media (max-width: 768px) {
+  .card {
+    flex-shrink: 1;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .content {
+    padding: var(--spacing-lg);
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .imageContainer {
+    height: 200px;
+  }
+
+  .category {
+    font-size: 12px;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .metaInfo {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .cookingTime,
+  .difficulty {
+    font-size: 12px;
+  }
+
+  .ingredients h3,
+  .instructions h3 {
+    font-size: 14px;
+  }
+
+  .ingredients {
+    margin: 0;
+  }
+  .ingredients li {
+    font-size: 12px;
+    padding: var(--spacing-xs) var(--spacing-xs);
+  }
+
+  .instructions {
+    font-size: 12px;
+    max-height: 200px;
+  }
+
+  .placeholder {
+    padding: 40px var(--spacing-xs);
+    min-height: auto;
+  }
+
+  .placeholderIcon {
+    font-size: 30px;
+  }
+
+  .placeholderTitle {
+    font-size: 14px;
+  }
+
+  .placeholderText {
+    font-size: 12px;
+  }
+
+  .loadingState {
+    min-height: auto;
+    padding: 40px var(--spacing-xs);
+  }
+
+  .spinner {
+    font-size: 36px;
+  }
+
+  .spinnerText {
+    font-size: 16px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .imageContainer {
+    height: 180px;
+  }
+
+  .content {
+    padding: var(--spacing-xs);
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .instructions {
+    max-height: 180px;
+  }
+
+  .button {
+    min-width: 240px;
+    padding: var(--spacing-xs) var(--spacing-xs);
+    font-size: 16px;
+  }
+}

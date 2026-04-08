@@ -28,7 +28,6 @@ const formatCookingTime = (minutes?: number) => {
   return `${hours} ч ${mins} мин`;
 };
 
-// Компоненты для разных состояний
 const LoadingState = () => (
   <div className={styles.loadingState}>
     <span className={styles.spinner}>⏳</span>
@@ -87,7 +86,6 @@ const RecipeContent = ({ recipe }: { recipe: Recipe }) => (
 );
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading, noRecipesMessage }) => {
-  // Состояние загрузки
   if (isLoading) {
     return (
       <div className={styles.card}>
@@ -96,7 +94,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading, noRec
     );
   }
 
-  // Состояние "нет рецептов"
   if (noRecipesMessage) {
     return (
       <div className={styles.card}>
@@ -105,7 +102,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading, noRec
     );
   }
 
-  // Пустое состояние
   if (!recipe) {
     return (
       <div className={styles.card}>
@@ -118,7 +114,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isLoading, noRec
     );
   }
 
-  // Состояние с рецептом
   return (
     <div className={styles.card}>
       <RecipeContent recipe={recipe} />

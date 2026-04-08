@@ -1,4 +1,3 @@
-/* eslint-disable no-trailing-spaces */
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Layout } from './components/Layout';
 import { Sidebar } from './components/Sidebar';
@@ -13,16 +12,13 @@ import {
 } from './data/utilits';
 import styles from './App.module.css';
 
-// Константы
 const MIN_INGREDIENTS = 3;
 const LOADING_DELAY_MS = 800;
 const MOBILE_BREAKPOINT = 768;
 
-// Типы для состояний
 type AppMode = 'random' | 'fridge';
 
 function App() {
-  // Состояния
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [currentRecipe, setCurrentRecipe] = useState<Recipe | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,12 +31,11 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
 
-  // Отслеживаем изменение размера окна
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= MOBILE_BREAKPOINT;
       setIsMobile(mobile);
-      // Если перешли на десктоп, закрываем Bottom Sheet
+
       if (!mobile && isSidebarOpen) {
         setIsSidebarOpen(false);
       }
@@ -50,7 +45,6 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isSidebarOpen]);
 
-  // Мемоизированные вычисления
   const hasEnoughIngredients = useMemo(
     () => selectedIngredients.length >= MIN_INGREDIENTS,
     [selectedIngredients]
@@ -63,7 +57,6 @@ function App() {
     [isLoading, errorMessage, currentRecipe]
   );
 
-  // Сброс режима "холодильник"
   const resetFridgeMode = useCallback(() => {
     setMatchingRecipes([]);
     setCurrentRecipeIndex(0);
@@ -73,7 +66,6 @@ function App() {
     }
   }, [selectedIngredients.length, hasEnoughIngredients]);
 
-  // Получение рецепта из холодильника
   const getRecipeFromFridge = useCallback((): Recipe | null => {
     if (!hasMatchingRecipes) {
       setErrorMessage(
@@ -84,7 +76,6 @@ function App() {
 
     const recipe = matchingRecipes[currentRecipeIndex];
 
-    // Обновляем индекс для следующего нажатия (циклически)
     const nextIndex = (currentRecipeIndex + 1) % matchingRecipes.length;
     setCurrentRecipeIndex(nextIndex);
 
@@ -97,7 +88,6 @@ function App() {
       setIsLoading(true);
       setAppMode(mode);
 
-      // Если это режим холодильника, закрываем Bottom Sheet
       if (mode === 'fridge' && isMobile) {
         setIsSidebarOpen(false);
       }
@@ -118,7 +108,6 @@ function App() {
     [hasEnoughIngredients, getRecipeFromFridge, isMobile]
   );
 
-  // Эффект: обновление подходящих рецептов при изменении ингредиентов
   useEffect(() => {
     if (!hasEnoughIngredients) {
       resetFridgeMode();
@@ -136,14 +125,13 @@ function App() {
       setCurrentRecipe(null);
     } else {
       setErrorMessage('');
-      // Сбрасываем текущий рецепт, он будет показан при нажатии кнопки
+
       if (appMode === 'fridge') {
         setCurrentRecipe(null);
       }
     }
   }, [selectedIngredients, hasEnoughIngredients, appMode, resetFridgeMode]);
 
-  // Обработчики событий
   const handleRandomRecipe = useCallback(() => {
     generateRecipe('random');
   }, [generateRecipe]);
@@ -164,11 +152,10 @@ function App() {
 
   const handleIngredientsChange = useCallback((ingredients: string[]) => {
     setSelectedIngredients(ingredients);
-    // Очищаем сообщение об ошибке при изменении ингредиентов
+
     setErrorMessage('');
   }, []);
 
-  // Показывать ли подсказку о режиме
   const showFridgeHint = useMemo(
     () =>
       !isLoading &&
@@ -179,7 +166,6 @@ function App() {
     [isLoading, appMode, hasEnoughIngredients, hasMatchingRecipes, currentRecipe]
   );
 
-  // Открытие/закрытие сайдбара
   const toggleSidebar = useCallback(() => {
     setIsSidebarOpen((prev) => !prev);
   }, []);

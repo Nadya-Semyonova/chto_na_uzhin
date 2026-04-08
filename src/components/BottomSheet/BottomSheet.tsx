@@ -42,9 +42,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, child
         <div className={styles.handle}>
           <div className={styles.handleBar} />
         </div>
-        <button className={styles.closeButton} onClick={onClose} aria-label="Закрыть холодильник">
-          ✕
-        </button>
         <div className={styles.content}>{children}</div>
       </div>
     </>

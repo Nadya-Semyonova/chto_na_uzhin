@@ -72,12 +72,12 @@
   }
 
   .mainContent {
-    padding: var(--spacing-xl) var(--spacing-md);
-    margin-top: 60px; /* Отступ для бургер-меню */
+    padding: var(--spacing-xs) var(--spacing-xs);
+    margin-top: 30px; /* Отступ для бургер-меню */
   }
 
   .container {
-    gap: var(--spacing-xl);
+    gap: var(--spacing-xs);
   }
 }
 
